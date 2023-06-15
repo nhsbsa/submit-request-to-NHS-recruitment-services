@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Check your email - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">Check your email</h1>
+
+      <p>We’ve sent an email to {% if (data['forgot-password']) %}{{ data['forgot-password'] }}{% else %}email@emailaddress.com{% endif %}</p>
+
+      <p>You can reset your password using the link in the email.</p>
+
+      <p><a href="sign-in">Return to sign in</a>.</p>
+
+    </div>
+
+  </div>
+{% endblock %}

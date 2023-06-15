@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  What is your email address? - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="v1/requestor-email-address" method="post" novalidate>
+      
+        {{ input({
+          label: {
+            "html": '
+            <h1 class="nhsuk-heading-l">
+              <span class="nhsuk-caption-l nhsuk-caption--bottom">Requestor details</span>
+              <span class="nhsuk-u-visually-hidden"> - </span>
+              What is your email address?
+            </h1>
+            '
+          },
+          "id": "requestorEmailAddress",
+          "name": "requestorEmailAddress",
+          "type": "email",
+          autocomplete: "email",
+          spellcheck: false,
+          "classes": "nhsuk-input--width-20"
+        }) }}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+    </div>  
+
+  </div>
+{% endblock %}

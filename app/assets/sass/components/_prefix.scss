@@ -1,0 +1,57 @@
+// ==========================================================================
+// PREFIX FOR TEXT INPUTS
+// ==========================================================================
+
+.nhsuk-input__wrapper {
+  display: flex;
+}
+
+.nhsuk-input__prefix,
+.nhsuk-input__suffix {
+@include nhsuk-font($size: 19);
+
+box-sizing: border-box;
+display: inline-block;
+min-width: nhsuk-px-to-rem(40px);
+height: 40px;
+padding: nhsuk-spacing(1);
+border: $nhsuk-border-width-form-element solid $nhsuk-form-border-color;
+background-color: $color_nhsuk-grey-4;
+
+text-align: center;
+@include mq($until: tablet) {
+  line-height: 1.6;
+}
+white-space: nowrap;
+
+// Emphasise non-editable status of prefixes and suffixes
+cursor: default;
+
+flex: 0 0 auto;
+
+// Split prefix/suffix onto separate lines on narrow screens
+@include mq($until: mobile) {
+  display: block;
+  height: 100%;
+  white-space: normal;
+}
+}
+
+.nhsuk-input__prefix {
+@include mq($until: mobile) {
+  border-bottom: 0;
+}
+@include mq($from: mobile) {
+  border-right: 0;
+}
+}
+
+// Split prefix/suffix onto separate lines on narrow screens
+.nhsuk-input__suffix {
+@include mq($until: mobile) {
+  border-top: 0;
+}
+@include mq($from: mobile) {
+  border-left: 0;
+}
+}

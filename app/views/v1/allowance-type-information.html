@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  What is the allowance type? - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="v1/allowance-type-information" method="post" novalidate>
+          
+          {{ textarea({
+            "name": "allowance-type-information",
+            "id": "allowance-type-information",
+            "label": {
+              "html": '
+              <h1 class="nhsuk-heading-l">
+                <span class="nhsuk-caption-l nhsuk-caption--bottom">Change details</span>
+                <span class="nhsuk-u-visually-hidden"> - </span>
+                What is the allowance type?
+              </h1>
+              '
+            }
+          }) }}
+    
+          {{ button({
+            "text": "Continue"
+          }) }}
+
+      </form>
+
+    </div>  
+
+  </div>
+{% endblock %}

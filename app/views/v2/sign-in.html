@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Sign in to your NHS Recruitment Services account - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="v2/sign-in" method="post" novalidate>
+
+        {% call fieldset({
+          legend: {
+            "text": "Sign in to your NHS Recruitment Services account",
+            "classes": "nhsuk-fieldset__legend--l",
+            "isPageHeading": true
+          }
+        }) %}
+        
+          {{ input({
+            label: {
+              "html": 'Email address'
+            },
+            "id": "email-address-sign-in",
+            "name": "email-address-sign-in",
+            "spellcheck": "false",
+            "classes": "nhsuk-input--width-20"
+          }) }}
+        
+          {{ input({
+            label: {
+              "html": 'Password'
+            },
+            "id": "password-sign-in",
+            "name": "password-sign-in",
+            "spellcheck": "false",
+            "type": "password",
+            "classes": "nhsuk-input--width-20"
+          }) }}
+                
+        {% endcall %}
+
+      <p><a href="forgot-password">Forgot your password?</a></p>
+
+      {{ button({
+        "text": "Sign in"
+      }) }}
+
+      </form>
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible nhsuk-u-margin-bottom-8">
+
+      <h2>If you do not have an account</h2>
+
+      <p>You can create a new account which will be approved by the HR shared services (HRSS) team, this can take up to 48 hours.</p>
+
+      <p>An email will be sent to you with the approval decision.</p>
+
+      <p><a class="nhsuk-button nhsuk-button--secondary" href="create-account">Create an account</a></p>
+
+    </div>
+
+  </div>
+{% endblock %}

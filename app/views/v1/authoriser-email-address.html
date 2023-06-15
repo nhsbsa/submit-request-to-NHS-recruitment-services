@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  What is {% if (data['authoriserFirstName']) and (data['authoriserLastName']) %}{{ data['authoriserFirstName'] }} {{ data['authoriserLastName'] }}{% else %}John Smith{% endif %}’s email address? - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% set authoriserEmail %}
+  {% if (data['authoriserFirstName']) and (data['authoriserLastName']) %}
+  <h1 class="nhsuk-heading-l">
+    <span class="nhsuk-caption-l nhsuk-caption--bottom">Line manager details</span>
+    <span class="nhsuk-u-visually-hidden"> - </span>
+    What is {{ data['authoriserFirstName'] }} {{ data['authoriserLastName'] }}’s email address?
+  </h1>
+  {% else %}
+  <h1 class="nhsuk-heading-l">
+    <span class="nhsuk-caption-l nhsuk-caption--bottom">Line manager details</span>
+    <span class="nhsuk-u-visually-hidden"> - </span>
+    What is John Smith’s email address?
+  </h1>
+  {% endif %}
+{% endset -%}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="v1/authoriser-email-address" method="post" novalidate>
+
+        {% call fieldset({
+          legend: {
+            "legend{}.html": true,
+            "html": authoriserEmail
+          }
+          }) %}
+          {{ input({
+            "id": "authoriser-email-address",
+            "name": "authoriser-email-address",
+            type: "email",
+            autocomplete: "email",
+            spellcheck: false,
+            "classes": "nhsuk-input--width-20"
+          }) }}
+        {% endcall %}
+  
+        {{ button({
+          "text": "Continue"
+        }) }}
+  
+      </form>
+
+    </div>  
+
+  </div>
+{% endblock %}

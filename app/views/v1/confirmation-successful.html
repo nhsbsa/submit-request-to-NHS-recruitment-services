@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Application successful
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <div class="nhsuk-card" style="background: #005EB8; margin-top: 0;">
+        <div class="nhsuk-card__content">
+          <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
+            The change request for {% if (data['employeeTitle']) and (data['employeeFirstName']) and (data['employeeLastName']) %}{{ data['employeeTitle']}} {{ data['employeeFirstName'] }} {{ data['employeeLastName'] }}{% else %}Mr Simon Jones{% endif %} has been submitted
+          </h1>
+          <h2 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+            Reference number: <span class="nhsuk-caption-xl nhsuk-caption--bottom nhsuk-u-font-weight-bold" style="color: white;">HDJ2123F</span>
+          </h2>
+        </div>
+      </div>
+
+      <p>We’ve sent a confirmation email to [email address]. If you cannot find your email you may need to check your spam or junk folders.</p>
+
+      <h2 class="nhsuk-heading-m">What happens next</h2>
+
+      <p>The change request will be processed in line with the payroll cut-off dates.</p>     
+      
+      <p>To sign out of the service select Finish or close the tab.</p>      
+      
+      <p>You can also make a change request for another employee.</p>
+      
+      <p><a class="nhsuk-button nhsuk-u-margin-bottom-0" href="javascript:window.close();">Finish</a></p>
+
+      <p><a class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="/v1/start-page">New change request</a></p>
+
+      <h2 class="nhsuk-heading-m">Give feedback</h2>
+
+      <p><a href="https://wh1.snapsurveys.com/s.asp?k=159241192074" target="_blank">What did you think of this service?<span class="nhsuk-u-visually-hidden"> (opens in a new window)</span></a> (takes 30 seconds).</p>
+
+    </div>
+
+</div>
+
+{% endblock %}

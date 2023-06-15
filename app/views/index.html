@@ -1,0 +1,134 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+HR Shared Services
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <!-- Change the page title here -->
+    <h1>
+      HR Shared Services
+      <span class="nhsuk-caption-xl nhsuk-caption--bottom">Submit a request to NHS Recruitment Services</span>
+    </h1>
+
+    <h2>Versions</h2>
+
+    <details class="nhsuk-details nhsuk-expander">
+      <summary class="nhsuk-details__summary">
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-two-thirds">
+            <span class="nhsuk-details__summary-text">
+              Sprint 1 - HRSS
+            </span>
+          </div>
+          <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
+            <strong class="nhsuk-tag">MVP</strong>
+          </div>
+        </div>
+      </summary>
+      <div class="nhsuk-details__text">
+        <h3 class="nhsuk-heading-s">
+          Information and documents related to the design
+        </h3>
+        <ul>
+          <li><a href="https://miro.com/app/board/uXjVMOg25Ck=/">User Flow (MVP)</a></li>
+        </ul>
+        <h3 class="nhsuk-heading-s">User research</h3>
+        <p>[User need, UR/recommendation summary]</p>
+        <h3 class="nhsuk-heading-s">Changes from previous iteration</h3>
+        <ul>
+          <li>Content revised and updated according to content designer's input</li>
+          <li>"What's Jane Doe's payroll number?" screen updated to accomodate for new starter form journey</li>
+          <li>Until the Account / Login mechanism is built, we will manually have to capture requestors name and email
+            address</li>
+        </ul>
+        <h3 class="nhsuk-heading-s">Error Messages</h3>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li><a href="v1/errors/403">403 (Standard)</a></li>
+          <li><a href="v1/errors/403-sequence">403 (Out of Sequence)</a></li>
+          <li><a href="v1/errors/404">404</a></li>
+          <li><a href="v1/errors/500">500</a></li>
+          <li><a href="v1/errors/503-generic">503 (Generic)</a></li>
+          <li><a href="v1/errors/503-specific">503 (Specific)</a></li>
+        </ul>
+        <hr>
+        {{ actionLink({
+          "classes": "nhsuk-u-margin-bottom-3",
+          "text": "View Prototype",
+          "href": "/v1/start-page"
+        }) }}
+      </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander">
+      <summary class="nhsuk-details__summary">
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-two-thirds">
+            <span class="nhsuk-details__summary-text">
+              Sprint 2 - HRSS
+            </span>
+          </div>
+          <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
+            <strong class="nhsuk-tag nhsuk-tag--grey">ITERATION 1</strong>
+          </div>
+        </div>
+      </summary>
+      <div class="nhsuk-details__text">
+        <h3 class="nhsuk-heading-s">Information and documents related to the design</h3>
+        <ul>
+          <li><a href="https://miro.com/app/board/uXjVM-AmF_k=/">User Flow (Iteration 1)</a></li>
+        </ul>
+        <h3 class="nhsuk-heading-s">User research</h3>
+        <p>[User need, UR/recommendation summary]</p>
+        <h3 class="nhsuk-heading-s">Changes from previous iteration</h3>
+        <ul>
+          <li>Added in the Account / Login mechanism</li>
+          <li>Removed requestors name and email address as this will be captured via the Account / Login mechanism</li>
+        </ul>
+        <h3 class="nhsuk-heading-s">Error Messages</h3>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li><a href="v2/errors/403">403 (Standard)</a></li>
+          <li><a href="v2/errors/403-sequence">403 (Out of Sequence)</a></li>
+          <li><a href="v2/errors/404">404</a></li>
+          <li><a href="v2/errors/500">500</a></li>
+          <li><a href="v2/errors/503-generic">503 (Generic)</a></li>
+          <li><a href="v2/errors/503-specific">503 (Specific)</a></li>
+        </ul>
+        <hr>
+        {{ actionLink({
+          "classes": "nhsuk-u-margin-bottom-3",
+          "text": "View Prototype",
+          "href": "/v2/sign-in"
+        }) }}
+      </div>
+    </details>
+
+  </div>
+</div>
+{% endblock %}

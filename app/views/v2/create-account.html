@@ -1,0 +1,120 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Create an NHS Recruitment Services account - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="v2/create-account" method="post" novalidate>
+
+        {% call fieldset({
+          legend: {
+            "text": "Create an NHS Recruitment Services account",
+            "classes": "nhsuk-fieldset__legend--l",
+            "isPageHeading": true
+          }
+        }) %}
+
+        <p>You’ll need to create an account to submit change requests.</p>
+        
+          {{ input({
+            label: {
+              "html": 'First name'
+            },
+            "id": "first-name-create-account",
+            "name": "first-name-create-account",
+            "spellcheck": "false",
+            "classes": "nhsuk-input--width-20"
+          }) }}
+        
+          {{ input({
+            label: {
+              "html": 'Last name'
+            },
+            "id": "last-name-create-account",
+            "name": "last-name-create-account",
+            "spellcheck": "false",
+            "classes": "nhsuk-input--width-20"
+          }) }}
+
+          <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+          {{ input({
+            label: {
+              "html": 'Email address'
+            },
+            "hint": {
+            "text": "You’ll need this email address to sign in to your account"
+            },
+            "id": "email-address-create-account",
+            "name": "email-address-create-account",
+            "spellcheck": "false",
+            "classes": "nhsuk-input--width-20"
+          }) }}
+
+          {{ input({
+            label: {
+              "html": 'Password'
+            },
+            "hint": {
+            "html": "Your password needs <ul><li>a number</li><li>upper and lowercase numbers</li><li>to be 8 characters or more</li></ul>"
+            },
+            "id": "password-create-account",
+            "name": "password-create-account",
+            "spellcheck": "false",
+            "type": "password",
+            "classes": "nhsuk-input--width-20"
+          }) }}
+
+          {{ input({
+            label: {
+              "html": 'Confirm password'
+            },
+            "id": "confirm-password-create-account",
+            "name": "confirm-password-create-account",
+            "spellcheck": "false",
+            "type": "password",
+            "classes": "nhsuk-input--width-20"
+          }) }}
+
+          <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+          {{ checkboxes({
+            "idPrefix": "comply-create-account",
+            "name": "comply-create-account",
+            "items": [
+              {
+                "value": "Yes",
+                "html": "I agree to comply with the <a href=\"#\">acceptable use declaration</a>."
+              }
+            ]
+          }) }}
+
+          {{ checkboxes({
+            "idPrefix": "privacy-policy-create-account",
+            "name": "privacy-policy-create-account",
+            "items": [
+              {
+                "value": "Yes",
+                "html": "I accept the terms in the <a href=\"#\">privacy policy</a>."
+              }
+            ]
+          }) }}
+                
+        {% endcall %}
+
+      {{ button({
+        "text": "Create account"
+      }) }}
+
+      <p>If you already have an account, <a href="sign-in">sign in</a>.</p>
+
+      </form>
+
+    </div>
+
+  </div>
+{% endblock %}

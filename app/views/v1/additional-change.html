@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  Do you want to make another change to {% if (data['employeeFirstName']) and (data['employeeLastName']) %}{{ data['employeeFirstName'] }} {{ data['employeeLastName'] }}{% else %}Jane Doe{% endif %}’s employment record? - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% set additionalChange %}
+  {% if (data['employeeFirstName']) and (data['employeeLastName']) %}
+    <h1 class="nhsuk-heading-l">
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Change details</span>
+      <span class="nhsuk-u-visually-hidden"> - </span>
+      Do you want to make another change to {{ data['employeeFirstName'] }} {{ data['employeeLastName'] }}’s employment record?
+    </h1>
+    <div class="nhsuk-hint">
+      For example, an employee could have changed their contracted hours as well as their band or grade.
+    </div>
+  {% else %}
+  <h1 class="nhsuk-heading-l">
+    <span class="nhsuk-caption-l nhsuk-caption--bottom">Change details</span>
+    <span class="nhsuk-u-visually-hidden"> - </span>
+    Do you want to make another change to Jane Doe’s employment record?
+  </h1>
+  <div class="nhsuk-hint">
+    For example, an employee could have changed their contracted hours as well as their band or grade.
+  </div>
+  {% endif %}
+{% endset -%}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="v1/additional-change" method="post" novalidate>
+
+        {% call fieldset({
+          legend: {
+            "legend{}.html": true,
+            "html": additionalChange
+          }
+          }) %}
+          {{ radios({
+            "idPrefix": "additional-change",
+            "name": "additional-change",
+            "classes": "nhsuk-radios--inline",
+            "items": [
+            {
+              "value": "Yes",
+              "text": "Yes"
+            },
+            {
+              "value": "No",
+              "text": "No"
+            }
+          ]
+        }) }}
+        {% endcall %}
+  
+        {{ button({
+          "text": "Continue"
+        }) }}
+  
+      </form>
+
+    </div>  
+
+  </div>
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'layout.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  Does {% if (data['employeeFirstName']) and (data['employeeLastName']) %}{{ data['employeeFirstName'] }} {{ data['employeeLastName'] }}{% else %}Jane Doe{% endif %} have a payroll number? - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% set employeePayrollNumber %}
+  {% if (data['employeeFirstName']) and (data['employeeLastName']) %}
+    <h1 class="nhsuk-heading-l">
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Employee details</span>
+      <span class="nhsuk-u-visually-hidden"> - </span>
+      Does {{ data['employeeFirstName'] }} {{ data['employeeLastName'] }} have a payroll number?
+    </h1>
+    <div class="nhsuk-hint">
+      You can find the payroll number in ESR. For example, 12457146
+    </div>
+  {% else %}
+  <h1 class="nhsuk-heading-l">
+    <span class="nhsuk-caption-l nhsuk-caption--bottom">Employee details</span>
+    <span class="nhsuk-u-visually-hidden"> - </span>
+    Does Jane Doe have a payroll number?
+  </h1>
+  <div class="nhsuk-hint">
+    You can find the payroll number in ESR. For example, 12457146
+  </div>
+  {% endif %}
+{% endset -%}
+
+{% set employeePayrollNumberHtml %}
+  {{ input({
+    id: "employeePayrollNumber",
+    name: "employeePayrollNumber",
+    classes: "nhsuk-u-width-two-thirds",
+    inputmode: "numeric",
+    pattern: "[0-9]*",
+    label: {
+      text: "Payroll number"
+    }
+  }) }}
+{% endset -%}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="v2/employee-payroll-number" method="post" novalidate>
+        
+        {{ radios({
+          "idPrefix": "employeePayrollNumberRadio",
+          "name": "employeePayrollNumberRadio",
+          "fieldset": {
+            "legend": {
+              "html": employeePayrollNumber,
+              "isPageHeading": "true"
+            }
+          },
+          "items": [
+            {
+              "value": "Yes",
+              "text": "Yes, the employee has a payroll number.",
+              "conditional": {
+                "html": employeePayrollNumberHtml
+              }
+            },
+            {
+              "value": "No",
+              "text": "No, the employee is a new starter and does not have a payroll number yet."
+            }
+          ]
+        }) }}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+    </div>  
+
+  </div>
+{% endblock %}

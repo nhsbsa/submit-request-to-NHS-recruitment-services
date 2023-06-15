@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+We’ve sent you a security code - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="v2/security-code" method="post" novalidate>
+
+        {% call fieldset({
+          legend: {
+            "text": "We’ve sent you a security code",
+            "classes": "nhsuk-fieldset__legend--l",
+            "isPageHeading": true
+          }
+        }) %}
+
+        <p>Enter the 4 digit security code we’ve sent to {% if (data['email-address-sign-in']) %}{{ data['email-address-sign-in'] }}{% else %}email@emailaddress.com{% endif %}.</p>
+
+        {{ details({
+          "text": "Not received your security code?",
+          "HTML": "
+          <p>You should check you have entered your email address correctly and try to resend the one-time code.</p>
+          "
+        }) }}
+        
+          {{ input({
+            label: {
+              "html": 'Security code'
+            },
+            "id": "security-code",
+            "name": "security-code",
+            "type": "number",
+            "pattern": "[0-9]*",
+            "classes": "nhsuk-input--width-5"
+          }) }}
+                
+        {% endcall %}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+      </form>
+
+      <p><a class="nhsuk-button nhsuk-button--secondary" href="security-code">Resend code</a></p>
+
+    </div>
+
+  </div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  How would you like to update {% if (data['employeeFirstName']) and (data['employeeLastName']) %}{{ data['employeeFirstName'] }} {{ data['employeeLastName'] }}{% else %}Jane Doe{% endif %}’s career break? - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% set careerBreakUpdate %}
+  {% if (data['employeeFirstName']) and (data['employeeLastName']) %}
+    <h1 class="nhsuk-heading-l">
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Change details</span>
+      <span class="nhsuk-u-visually-hidden"> - </span>
+      How would you like to update {{ data['employeeFirstName'] }} {{ data['employeeLastName'] }}’s career break?
+    </h1>
+    <div class="nhsuk-hint">
+      Select one option
+    </div>
+  {% else %}
+  <h1 class="nhsuk-heading-l">
+    <span class="nhsuk-caption-l nhsuk-caption--bottom">Change details</span>
+    <span class="nhsuk-u-visually-hidden"> - </span>
+    How would you like to update Jane Doe’s career break?
+  </h1>
+  <div class="nhsuk-hint">
+    Select one option
+  </div>
+  {% endif %}
+{% endset -%}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="v2/career-break-update" method="post" novalidate>
+
+        {% call fieldset({
+          legend: {
+            "legend{}.html": true,
+            "html": careerBreakUpdate
+          }
+          }) %}
+          {{ radios({
+            "idPrefix": "career-break-update",
+            "name": "career-break-update",
+            "classes": "nhsuk-radios--inline",
+            "items": [
+            {
+              "value": "Extend the career break",
+              "text": "Extend the career break"
+            },
+            {
+              "value": "Provide an agreed return to work date and reinstate pay",
+              "text": "Provide an agreed return to work date and reinstate pay"
+            }
+          ]
+        }) }}
+        {% endcall %}
+  
+        {{ button({
+          "text": "Continue"
+        }) }}
+  
+      </form>
+
+    </div>  
+
+  </div>
+{% endblock %}

@@ -1,0 +1,1070 @@
+{% extends 'layout.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  Check your answers - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>Check your answers</h1>
+
+      <h2 class="nhsuk-heading-m">Employee details</h2>
+
+      <dl class="nhsuk-summary-list">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if (data['employeeTitle']) and (data['employeeFirstName']) and (data['employeeLastName']) %}
+            {{ data['employeeTitle']}} {{ data['employeeFirstName'] }} {{ data['employeeLastName'] }}
+            {% else %}
+            Mr Simon Jones
+            {% endif %}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/employee-name">
+              Change<span class="nhsuk-u-visually-hidden"> employee name</span>
+            </a>
+      
+          </dd>
+      
+        </div>
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Current position number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if (data['employeePositionNumber']) %}
+            {{ data['employeePositionNumber']}}
+            {% else %}
+            22123456
+            {% endif %}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/employee-position-number">
+              Change<span class="nhsuk-u-visually-hidden"> current position number</span>
+            </a>
+      
+          </dd>
+      
+        </div>
+
+        {% if (data['employeePayrollNumber']) %}
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Payroll number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['employeePayrollNumber']}}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/employee-payroll-number">
+              Change<span class="nhsuk-u-visually-hidden"> payroll number</span>
+            </a>
+      
+          </dd>
+      
+        </div>
+
+        {% endif %}
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Current job title
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if (data['employeeJobTitle']) %}
+            {{ data['employeeJobTitle']}}
+            {% else %}
+            Therapeutic Radiographer
+            {% endif %}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/employee-job-title">
+              Change<span class="nhsuk-u-visually-hidden"> current job title</span>
+            </a>
+      
+          </dd>
+      
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Current cost centre
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if (data['employeeCostCentre']) %}
+            {{ data['employeeCostCentre'] }}
+            {% else %}
+            91412S5FA
+            {% endif %}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/employee-cost-centre">
+              Change<span class="nhsuk-u-visually-hidden"> current cost centre</span>
+            </a>
+      
+          </dd>
+      
+        </div>
+      
+      </dl>
+
+      <h2 class="nhsuk-heading-m">Change request details</h2>
+
+      {% if not (data['change-type']) %}
+      <p>None selected</p>
+      {% endif %}
+
+
+      {% if (data['change-type']) == "abscence-removal" %}
+
+      <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-0">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Type of change
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Abscence removal
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="#">Remove</a><span class="nhsuk-u-visually-hidden"> type of change</span>
+      
+          </dd>
+      
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Date of abscence
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['dateOfAbscence'] }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/date-of-abscence">Change</a><span class="nhsuk-u-visually-hidden"> date of abscence</span>
+      
+          </dd>
+      
+        </div>
+
+      </dl>
+
+      {% endif %}
+
+      {% if (data['change-type']) == "allowances" %}
+
+      <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-0">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Type of change
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Allowances
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="#">Remove</a><span class="nhsuk-u-visually-hidden"> type of change</span>
+      
+          </dd>
+      
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Allowance type
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['allowance-type'] }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/allowance-type">Change</a><span class="nhsuk-u-visually-hidden"> allowance type</span>
+      
+          </dd>
+      
+        </div>
+
+        {% if (data['allowance-type']) == "other" %}
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Allowance type information
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['allowance-type'] }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/allowance-type-information">Change</a><span class="nhsuk-u-visually-hidden"> allowance type information</span>
+      
+          </dd>
+      
+        </div>
+
+        {% endif %}
+
+        {% if ((data['allowance-type']) == "clinical-excellence-award") or ((data['allowance-type']) == "discretionary-points") or ((data['allowance-type']) == "distinction-awards") or ((data['allowance-type']) == "long-term-recruitment") or ((data['allowance-type']) == "on-call-allowance") or ((data['allowance-type']) == "short-term-recruitment") or ((data['allowance-type']) == "shift-allowance")  %}
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            {% if (data['unit']) == "%" %}Percentage{% elif (data['unit']) == "£" %}Amount{% else %}Percentage or amount{% endif %} of salary allowance
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if (data['unit']) == "£" %}£{% endif %}{{ data['amount'] }}{% if (data['unit']) == "%" %}%{% endif %} per {{ data['salary-percentage-frequency'] }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/salary-percentage-amount">Change</a><span class="nhsuk-u-visually-hidden"> percentage or amount of salary allowance</span>
+      
+          </dd>
+      
+        </div>
+
+        {% endif %}
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Duration of additional salary payments
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['duration'] }} per {{ data['duration-frequency'] }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/salary-duration">Change</a><span class="nhsuk-u-visually-hidden"> duration of additional salary payments</span>
+      
+          </dd>
+      
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Senior finance lead contact details
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['financeLeadFirstName'] }} per {{ data['financeLeadLastName'] }}<br>
+            {{ data['financeLead-email-address'] }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/senior-finance-lead">Change</a><span class="nhsuk-u-visually-hidden"> senior finance lead contact details</span>
+      
+          </dd>
+      
+        </div>
+
+      </dl>
+
+      {% endif %}
+
+      {% if (data['change-type']) == "band-or-grade" %}
+
+      <dl class="nhsuk-summary-list nhsuk-margin-bottom-0">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Type of band or grade change
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['band-or-grade-type'] }}
+          </dd>
+
+          <dd class="nhsuk-summary-list__actions">
+
+            <a href="#">Remove</a><span class="nhsuk-u-visually-hidden"> type of band or grade change</span>
+
+          </dd>
+
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            New position number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['newPositionNumber'] }}
+          </dd>
+
+          <dd class="nhsuk-summary-list__actions">
+
+            <a href="/v1/new-position-number">Change</a><span class="nhsuk-u-visually-hidden"> new position number</span>
+
+          </dd>
+
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            New pay band
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['new-pay-band'] }}
+          </dd>
+
+          <dd class="nhsuk-summary-list__actions">
+
+            <a href="/v1/new-pay-band">Change</a><span class="nhsuk-u-visually-hidden"> new pay band</span>
+
+          </dd>
+
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            New pay-step point
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['new-pay-step-point'] }}
+          </dd>
+
+          <dd class="nhsuk-summary-list__actions">
+
+            <a href="/v1/new-pay-step-point">Change</a><span class="nhsuk-u-visually-hidden"> new pay-step point</span>
+
+          </dd>
+
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            New salary amount
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            £{{ data['newSalaryAmount'] }}
+          </dd>
+
+          <dd class="nhsuk-summary-list__actions">
+
+            <a href="/v1/new-salary-amount">Change</a><span class="nhsuk-u-visually-hidden"> new salary amount</span>
+
+          </dd>
+
+        </div>
+
+      </dl>
+
+      {% endif %}
+
+      {% if (data['change-type']) == "cost-centre" %}
+
+      <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-0">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Type of change
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Cost Centre
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="#">Remove</a><span class="nhsuk-u-visually-hidden"> type of change</span>
+      
+          </dd>
+      
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            New cost centre
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['newCostCentre'] }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/new-cost-centre">Change</a><span class="nhsuk-u-visually-hidden"> new cost centre</span>
+      
+          </dd>
+      
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            New position number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['newPositionNumber2'] }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/new-position-number-2">Change</a><span class="nhsuk-u-visually-hidden"> new position number</span>
+      
+          </dd>
+      
+        </div>
+
+      </dl>
+
+      {% endif %}
+
+      {% if (data['change-type']) == "future-date-changes" %}
+
+      <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-0">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Type of change
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Future date changes
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="#">Remove</a><span class="nhsuk-u-visually-hidden"> type of change</span>
+      
+          </dd>
+      
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Future date change
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['futureDateChange'] }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/future-date-change">Change</a><span class="nhsuk-u-visually-hidden"> future date change</span>
+      
+          </dd>
+      
+        </div>
+
+      </dl>
+
+      {% endif %}
+
+      {% if (data['change-type']) == "hours" %}
+
+      <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-0">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Type of change
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Hours
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="#">Remove</a><span class="nhsuk-u-visually-hidden"> type of change</span>
+      
+          </dd>
+      
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Type of hours change
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['type-of-hour-change'] }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/future-date-change">Change</a><span class="nhsuk-u-visually-hidden"> type of hours change</span>
+      
+          </dd>
+      
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            New working hours and pattern
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if (data['number-of-hours']) == "hours" %}{{ data['number-of-hours'] }} hours<br>{% endif %}
+            {{ data['working-pattern'] }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/new-hours-pattern">Change</a><span class="nhsuk-u-visually-hidden"> new working hours and pattern</span>
+      
+          </dd>
+      
+        </div>
+
+      </dl>
+
+      {% endif %}
+
+      {% if (data['change-type']) == "maternity-paternity" %}
+
+      <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-0">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Type of change
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Maternity, Paternity, Shared Parental or Adoption Leave
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="#">Remove</a><span class="nhsuk-u-visually-hidden"> type of change</span>
+      
+          </dd>
+      
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Documents uploaded
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Maternity Form.pdf (PDF, 123KB)
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/upload-document">Change</a><span class="nhsuk-u-visually-hidden"> Maternity, Paternity, Shared Parental or Adoption Leave document</span>
+      
+          </dd>
+      
+        </div>
+
+      </dl>
+
+      {% endif %}
+      
+      {% if (data['change-type']) == "pay-step-point" %}
+
+      <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-0">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Type of change
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Pay and pay step point
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="#">Remove</a><span class="nhsuk-u-visually-hidden"> type of change</span>
+      
+          </dd>
+      
+        </div>
+
+      </dl>
+
+      {% endif %}
+
+      {% if (data['change-type']) == "upaid-leave-career-break" %}
+
+      <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-0">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Type of change
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Unpaid leave or career break
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="#">Remove</a><span class="nhsuk-u-visually-hidden"> type of change</span>
+      
+          </dd>
+      
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Type of career break or unpaid leave
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['leave-or-break-type'] }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/leave-or-break-type">Change</a><span class="nhsuk-u-visually-hidden"> career break or unpaid leave type</span>
+      
+          </dd>
+      
+        </div>
+
+        {% if (data['leave-or-break-type']) == "Due to take a career break" %}
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Documents uploaded
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Career Break.pdf (PDF, 123KB)
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/upload-document">Change</a><span class="nhsuk-u-visually-hidden"> career break document</span>
+      
+          </dd>
+      
+        </div>
+
+        {% endif %}
+
+        {% if (data['leave-or-break-type']) == "Currently on a career break" %}
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Type of career break update
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['career-break-update'] }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/career-break-update">Change</a><span class="nhsuk-u-visually-hidden"> type of career break update</span>
+      
+          </dd>
+      
+        </div>
+
+        {% if (data['career-break-update']) == "Extend the career break" %}
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Career break extended until
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['careerBreakExtendedUntil'] }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/career-break-extended-until">Change</a><span class="nhsuk-u-visually-hidden"> career break extended until</span>
+      
+          </dd>
+      
+        </div>
+
+        {% elif (data['career-break-update']) == "Provide an agreed return to work date and reinstate pay" %}
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Return to work date
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['returnToWorkDate'] }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/return-to-work-date">Change</a><span class="nhsuk-u-visually-hidden"> return to work date</span>
+      
+          </dd>
+      
+        </div>
+
+        {% endif %}
+
+        {% endif %}
+
+        {% if (data['leave-or-break-type']) == "Due to to take unpaid leave" %}
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Type of career break or unpaid leave
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Due to take unpaid leave
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/leave-or-break-type">Change</a><span class="nhsuk-u-visually-hidden"> career break or unpaid leave type</span>
+      
+          </dd>
+      
+        </div> 
+
+        {% endif %}
+
+      </dl>
+
+      {% endif %}
+
+      {% if (data['change-type']) == "other" %}
+
+      <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-0">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Type of change
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Other
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="#">Remove</a><span class="nhsuk-u-visually-hidden"> type of change</span>
+      
+          </dd>
+      
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Type of other change
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['what-other-change'] }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/what-other-change">Change</a><span class="nhsuk-u-visually-hidden"> type of other change</span>
+      
+          </dd>
+      
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Change to make
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['other-change-information'] }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/other-change-information">Change</a><span class="nhsuk-u-visually-hidden"> information around what change needs making</span>
+      
+          </dd>
+      
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Document to upload
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['document-to-upload'] }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/document-to-upload">Change</a><span class="nhsuk-u-visually-hidden"> if a document needs uploading</span>
+      
+          </dd>
+      
+        </div>
+
+        {% if (data['new-starter-form']) == "Yes" %}
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            New starter form
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['new-starter-form'] }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/new-starter-form">Change</a><span class="nhsuk-u-visually-hidden"> if document is a new starter form</span>
+      
+          </dd>
+      
+        </div>
+
+        {% endif %}
+
+        {% if (data['document-to-upload']) == "Yes" %}
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Documents uploaded
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if (data['new-starter-form']) == "Yes" %}New Starter Form.pdf (PDF, 123KB){% else %}Fake Form.pdf (PDF, 123KB){% endif %}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/upload-document">Change</a><span class="nhsuk-u-visually-hidden"> career break document</span>
+      
+          </dd>
+      
+        </div>
+
+        {% endif %}
+
+
+
+      </dl>
+
+      {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <dl class="nhsuk-summary-list">
+
+        {% if (data['changeEffectiveFrom']) %}
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Change effective from
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['changeEffectiveFrom'] }}
+          </dd>
+
+          <dd class="nhsuk-summary-list__actions">
+
+            <a href="/v1/change-effective-from">Change</a><span class="nhsuk-u-visually-hidden"> date effective from</span>
+
+          </dd>
+
+        </div>
+
+        {% endif %}
+
+        {% if (data['temporary-change']) %}
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Temporary change
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['temporary-change'] }}
+          </dd>
+
+          <dd class="nhsuk-summary-list__actions">
+
+            <a href="/v1/temporary-change">Change</a><span class="nhsuk-u-visually-hidden"> if the change is temporary</span>
+
+          </dd>
+
+        </div>
+
+        {% endif %}
+
+        {% if (data['temporary-change'] === "Yes") %}
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Change effective until
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['changeEffectiveUntil'] }}
+          </dd>
+
+          <dd class="nhsuk-summary-list__actions">
+
+            <a href="/v1/change-effective-until">Change</a><span class="nhsuk-u-visually-hidden"> date effective until</span>
+
+          </dd>
+
+        </div>
+
+        {% endif %}
+
+        {% if (data['email']) %}
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Email to employee
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['email'] }}
+          </dd>
+
+          <dd class="nhsuk-summary-list__actions">
+
+            <a href="/v1/email">Change</a><span class="nhsuk-u-visually-hidden"> if an email needs to be sent to the employee</span>
+
+          </dd>
+
+        </div>
+
+        {% endif %}
+
+        {% if (data['additional-information']) %}
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Additional information
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['additional-information'] }}
+          </dd>
+
+          <dd class="nhsuk-summary-list__actions">
+
+            <a href="/v1/additional-information">Change</a><span class="nhsuk-u-visually-hidden"> additional information</span>
+
+          </dd>
+
+        </div>
+
+        {% endif %}
+
+      </dl>
+
+      <h2 class="nhsuk-heading-m">Line manager details</h2>
+
+      <dl class="nhsuk-summary-list">
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if (data['authoriserFirstName']) and (data['authoriserLastName']) %}
+            {{ data['authoriserFirstName'] }} {{ data['authoriserLastName'] }}
+            {% else %}
+            John Smith
+            {% endif %}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/authoriser-name">Change</a><span class="nhsuk-u-visually-hidden"> line manager’s name</span>
+      
+          </dd>
+      
+        </div>
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Job title
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if (data['authoriserJobTitle']) %}
+            {{ data['authoriserJobTitle'] }}
+            {% else %}
+            Health Records Manager
+            {% endif %}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/authoriser-job-title">Change</a><span class="nhsuk-u-visually-hidden"> line manager’s job title</span>
+      
+          </dd>
+      
+        </div>
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Email address
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if (data['authoriser-email-address']) %}
+            {{ data['authoriser-email-address'] }}
+            {% else %}
+            email@emailaddress.com
+            {% endif %}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/authoriser-email-address">Change</a><span class="nhsuk-u-visually-hidden"> line manager’s email address</span>
+      
+          </dd>
+      
+        </div>
+      
+      </dl>
+
+
+
+
+      <form action="v1/check-your-answers" method="post" novalidate>
+  
+        {{ button({
+          "text": "Submit"
+        }) }}
+  
+      </form>
+
+    </div>  
+
+  </div>
+{% endblock %}

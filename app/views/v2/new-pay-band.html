@@ -1,0 +1,103 @@
+{% extends 'layout.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  What is the new pay band? - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="v2/new-pay-band" method="post" novalidate>
+
+        {% call fieldset({
+          legend: {
+            "legend{}.html": true,
+            "html": '
+            <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">
+              <span class="nhsuk-caption-l nhsuk-caption--bottom">Change details</span>
+              <span class="nhsuk-u-visually-hidden"> - </span>
+              What is the new pay band?
+            </h1>
+            <div class="nhsuk-hint nhsuk-u-margin-bottom-2">
+              Select one option
+            </div>
+            '
+          }
+          }) %}
+          {{ radios({
+            "idPrefix": "new-pay-band",
+            "name": "new-pay-band",
+            "items": [
+          {
+            "value": "Band 2",
+            "text": "Band 2"
+          },
+          {
+            "value": "Band 3",
+            "text": "Band 3"
+          },
+          {
+            "value": "Band 4",
+            "text": "Band 4"
+          },
+          {
+            "value": "Band 5",
+            "text": "Band 5"
+          },
+          {
+            "value": "Band 6",
+            "text": "Band 6"
+          },
+          {
+            "value": "Band 7",
+            "text": "Band 7"
+          },
+          {
+            "value": "Band 8a",
+            "text": "Band 8a"
+          },
+          {
+            "value": "Band 8b",
+            "text": "Band 8b"
+          },
+          {
+            "value": "Band 8c",
+            "text": "Band 8c"
+          },
+          {
+            "value": "Band 8d",
+            "text": "Band 8d"
+          },
+          {
+            "value": "Band 9",
+            "text": "Band 9"
+          }
+        ]
+        }) }}
+        {% endcall %}
+  
+        {{ button({
+          "text": "Continue"
+        }) }}
+  
+      </form>
+
+    </div>  
+
+  </div>
+{% endblock %}

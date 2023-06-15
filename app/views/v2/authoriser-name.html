@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+Who authorised the change? - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="v2/authoriser-name" method="post" novalidate>
+
+      {% call fieldset({
+        legend: {
+          "html": '
+          <h1 class="nhsuk-heading-l">
+            <span class="nhsuk-caption-l nhsuk-caption--bottom">Line manager details</span>
+            <span class="nhsuk-u-visually-hidden"> - </span>
+            Who authorised the change?
+          </h1>
+          '
+        }
+      }) %}
+      
+        {{ input({
+          label: {
+            "html": 'First name'
+          },
+          "id": "authoriserFirstName",
+          "name": "authoriserFirstName",
+          autocomplete: "given-name",
+          spellcheck: false,
+          "classes": "nhsuk-input--width-20"
+        }) }}
+      
+        {{ input({
+          label: {
+            "html": 'Last name'
+          },
+          "id": "authoriserLastName",
+          "name": "authoriserLastName",
+          autocomplete: "family-name",
+          spellcheck: false,
+          "classes": "nhsuk-input--width-20"
+        }) }}
+      
+      {% endcall %}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+      </form>
+
+    </div>  
+
+  </div>
+{% endblock %}

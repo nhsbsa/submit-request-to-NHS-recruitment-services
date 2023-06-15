@@ -1,0 +1,121 @@
+{% extends 'layout.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  What type of change do you want to make? - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="v2/change-type" method="post" novalidate>
+
+        {% call fieldset({
+          legend: {
+            "legend{}.html": true,
+            "html": '
+            <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">
+              <span class="nhsuk-caption-l nhsuk-caption--bottom">Change details</span>
+              <span class="nhsuk-u-visually-hidden"> - </span>
+              What type of change do you want to make?
+            </h1>
+            <div class="nhsuk-hint nhsuk-u-margin-bottom-2">
+              Select one option
+            </div>
+            '
+          }
+          }) %}
+          {{ radios({
+            "idPrefix": "change-type",
+            "name": "change-type",
+            "items": [
+          {
+            "value": "abscence-removal",
+            "text": "Abscence removal",
+            "hint": {
+              "text": "Includes sickness, annual leave and annual leave amendments"
+            }
+          },
+          {
+            "value": "allowances",
+            "text": "Allowances",
+            "hint": {
+              "text": "Includes all allowances"
+            }
+          },
+          {
+            "value": "band-or-grade",
+            "text": "Band or grade",
+            "hint": {
+              "text": "Includes grade and promotions"
+            }
+          },
+          {
+            "value": "cost-centre",
+            "text": "Cost centre"
+          },
+          {
+            "value": "extension-of-probation",
+            "text": "Extension of probation"
+          },
+          {
+            "value": "future-date-changes",
+            "text": "Future date changes"
+          },
+          {
+            "value": "hours",
+            "text": "Hours",
+            "hint": {
+              "text": "Includes changes to current term-time working, flexible working and annualised hours"
+            }
+          },
+          {
+            "value": "maternity-paternity",
+            "text": "Maternity, Paternity, Shared Parental or Adoption leave details"
+          },
+          {
+            "value": "pay-step-point",
+            "text": "Pay and pay step point",
+            "hint": {
+              "text": "Includes changes to pay step point, personal salaries and career progression"
+            }
+          },
+          {
+            "value": "upaid-leave-career-break",
+            "text": "Unpaid leave or career break"
+          },
+          {
+            "value": "other",
+            "text": "Other",
+            "hint": {
+              "text": "Includes new term-time applications, Visa details, new starter forms, and upload a document unrelated to listed changes"
+            }
+          }
+        ]
+        }) }}
+        {% endcall %}
+  
+        {{ button({
+          "text": "Continue"
+        }) }}
+  
+      </form>
+
+    </div>  
+
+  </div>
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends 'layout.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  What is the allowance type? - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="v2/allowance-type" method="post" novalidate>
+
+        {% call fieldset({
+          legend: {
+            "legend{}.html": true,
+            "html": '
+            <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">
+              <span class="nhsuk-caption-l nhsuk-caption--bottom">Change details</span>
+              <span class="nhsuk-u-visually-hidden"> - </span>
+              What is the allowance type?
+            </h1>
+            <div class="nhsuk-hint nhsuk-u-margin-bottom-2">
+              Select one option
+            </div>
+            '
+          }
+          }) %}
+          {{ radios({
+            "idPrefix": "allowance-type",
+            "name": "allowance-type",
+            "items": [
+          {
+            "value": "clinical-excellence-award",
+            "text": "Clinical Excellence Award"
+          },
+          {
+            "value": "discretionary-points",
+            "text": "Discretionary Points"
+          },
+          {
+            "value": "distinction-awards",
+            "text": "Distincation Awards"
+          },
+          {
+            "value": "hca-allowance-inner",
+            "text": "HCA allowance - Inner"
+          },
+          {
+            "value": "hca-allowance-outer",
+            "text": "HCA allowance - Outer"
+          },
+          {
+            "value": "hca-allowance-fringe",
+            "text": "HCA allowance - Fringe"
+          },
+          {
+            "value": "hca-allowance-medical",
+            "text": "HCA allowance - Medical"
+          },
+          {
+            "value": "long-term-recruitment",
+            "text": "Long-term recruitment and retention premia"
+          },
+          {
+            "value": "on-call-allowance",
+            "text": "On-call allowance"
+          },
+          {
+            "value": "short-term-recruitment",
+            "text": "Short-term recruitment and retention premia"
+          },
+          {
+            "value": "shift-allowance",
+            "text": "Shift allowance"
+          },
+          {
+            "value": "other",
+            "text": "Other"
+          }
+        ]
+        }) }}
+        {% endcall %}
+  
+        {{ button({
+          "text": "Continue"
+        }) }}
+  
+      </form>
+
+    </div>  
+
+  </div>
+{% endblock %}

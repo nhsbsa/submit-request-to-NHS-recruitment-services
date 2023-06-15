@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  What is {% if (data['employeeFirstName']) and (data['employeeLastName']) %}{{ data['employeeFirstName'] }} {{ data['employeeLastName'] }}{% else %}Jane Doe{% endif %}’s current position number? - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% set employeeName %}
+  {% if (data['employeeFirstName']) and (data['employeeLastName']) %}
+    <h1 class="nhsuk-heading-l">
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Employee details</span>
+      <span class="nhsuk-u-visually-hidden"> - </span>
+      What is {{ data['employeeFirstName'] }} {{ data['employeeLastName'] }}’s current position number?
+    </h1>
+    <div class="nhsuk-hint">
+      You can find the position number in ESR. For example, 22123456
+    </div>
+  {% else %}
+  <h1 class="nhsuk-heading-l">
+    <span class="nhsuk-caption-l nhsuk-caption--bottom">Employee details</span>
+    <span class="nhsuk-u-visually-hidden"> - </span>
+    What is Jane Doe’s current position number?
+  </h1>
+  <div class="nhsuk-hint">
+    You can find the position number in ESR. For example, 22123456
+  </div>
+  {% endif %}
+{% endset -%}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="v2/employee-position-number" method="post" novalidate>
+      
+        {{ input({
+          label: {
+            "html": employeeName
+          },
+          "id": "employeePositionNumber",
+          "name": "employeePositionNumber",
+          "type": "text",
+          "classes": "nhsuk-input--width-20"
+        }) }}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+    </div>  
+
+  </div>
+{% endblock %}
