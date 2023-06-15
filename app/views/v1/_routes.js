@@ -136,7 +136,7 @@ router.post('/v1/change-type', function (req, res) {
   } else if (changeType == 'future-date-changes') {
     res.redirect('/v1/future-date-change')
   } else if (changeType == 'hours') {
-    res.redirect('/v1/type-of-hours-change')
+    res.redirect('/v1/type-of-hour-change')
   } else if (changeType == 'maternity-paternity') {
     res.redirect('/v1/upload-document')
   } else if (changeType == 'pay-step-point') {

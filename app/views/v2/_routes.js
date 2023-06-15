@@ -176,7 +176,7 @@ router.post('/v2/change-type', function (req, res) {
   } else if (changeType == 'future-date-changes') {
     res.redirect('/v2/future-date-change')
   } else if (changeType == 'hours') {
-    res.redirect('/v2/type-of-hours-change')
+    res.redirect('/v2/type-of-hour-change')
   } else if (changeType == 'maternity-paternity') {
     res.redirect('/v2/upload-document')
   } else if (changeType == 'pay-step-point') {
