@@ -25,6 +25,56 @@
 
       <h1>Check your answers</h1>
 
+      <h2 class="nhsuk-heading-m">Requestor details</h2>
+
+      <dl class="nhsuk-summary-list">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if (data['requestorFirstName']) and (data['requestorLastName']) %}
+            {{ data['requestorFirstName'] }} {{ data['requestorLastName'] }}
+            {% else %}
+            Joe Bloggs
+            {% endif %}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/requestor-name">
+              Change<span class="nhsuk-u-visually-hidden"> requestor’s name</span>
+            </a>
+      
+          </dd>
+      
+        </div>
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Email address
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if (data['requestorEmailAddress']) %}
+            {{ data['requestorEmailAddress']}}
+            {% else %}
+            joe.bloggs@nhsbsa.nhs.uk
+            {% endif %}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            <a href="/v1/requestor-email-address">
+              Change<span class="nhsuk-u-visually-hidden"> requestor’s email address</span>
+            </a>
+      
+          </dd>
+      
+        </div>
+
+      </dl>
+
       <h2 class="nhsuk-heading-m">Employee details</h2>
 
       <dl class="nhsuk-summary-list">
