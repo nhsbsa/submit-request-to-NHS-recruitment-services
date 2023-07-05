@@ -136,7 +136,7 @@ router.post('/v1/change-type', function (req, res) {
   } else if (changeType == 'future-date-changes') {
     res.redirect('/v1/future-date-change')
   } else if (changeType == 'hours') {
-    res.redirect('/v1/type-of-hour-change')
+    res.redirect('/v1/new-hours-pattern')
   } else if (changeType == 'maternity-paternity') {
     res.redirect('/v1/upload-document')
   } else if (changeType == 'pay-step-point') {
@@ -206,7 +206,7 @@ router.post('/v1/temporary-change', function (req, res) {
   if (temporaryChange == 'Yes') {
     res.redirect('/v1/change-effective-until')
   } else if (temporaryChange == 'No') {
-    res.redirect('/v1/email')
+    res.redirect('/v1/letter')
   } else {
     res.redirect('/v1/temporary-change')
   }
@@ -229,7 +229,7 @@ router.post('/v1/change-effective-until', function (req, res) {
       year: changeEffectiveUntilYear
     }).toFormat("d MMMM yyyy");
 
-    res.redirect('/v1/email')
+    res.redirect('/v1/letter')
   } else {
     res.redirect('/v1/change-effective-until')
   }
@@ -248,6 +248,22 @@ router.post('/v1/email', function (req, res) {
     res.redirect('/v1/additional-information')
   } else {
     res.redirect('/v1/email')
+  }
+
+})
+
+// Letter
+
+router.post('/v1/letter', function (req, res) {
+
+  var letter = req.session.data['letter'];
+
+  if (letter == 'Yes') {
+    res.redirect('/v1/additional-information')
+  } else if (letter == 'No') {
+    res.redirect('/v1/additional-information')
+  } else {
+    res.redirect('/v1/letter')
   }
 
 })
@@ -408,7 +424,7 @@ router.post('/v1/senior-finance-lead', function (req, res) {
     if (allowanceType == 'clinical-excellence-award' || allowanceType == 'discretionary-points' || allowanceType == 'distinction-awards' || allowanceType == 'long-term-recruitment' || allowanceType == 'on-call-allowance' || allowanceType == 'short-term-recruitment' || allowanceType == 'shift-allowance' || allowanceType == 'other') {
       res.redirect('/v1/change-effective-from')
     } else if (allowanceType == 'hca-allowance-inner' || allowanceType == 'hca-allowance-outer' || allowanceType == 'hca-allowance-fringe' || allowanceType == 'hca-allowance-medical') {
-      res.redirect('/v1/email')
+      res.redirect('/v1/letter')
     } else {
       res.redirect('/v1/senior-finance-lead')
     }
@@ -561,7 +577,9 @@ router.post('/v1/new-hours-pattern', function (req, res) {
   var numberOfHours = req.session.data['number-of-hours'];
   var workingPattern = req.session.data['working-pattern'];
 
-  if (workingPattern) {
+  if (workingPattern == 'Term time') {
+    res.redirect('/v1/upload-document')
+  } else if (workingPattern == 'Flexible working' || workingPattern == 'Annualised hours' || workingPattern == 'Condensed hours') {
     res.redirect('/v1/change-effective-from')
   } else {
     res.redirect('/v1/new-hours-pattern')
