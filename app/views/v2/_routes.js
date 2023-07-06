@@ -199,7 +199,7 @@ router.post('/v2/date-of-abscence', function (req, res) {
   var dateOfAbscenceMonth = req.session.data['date-of-abscence-month'];
   var dateOfAbscenceYear = req.session.data['date-of-abscence-year'];
 
-  if (!isNaN(dateOfAbscenceDay) && !isNaN(dateOfAbscenceMonth) && !isNaN(dateOfAbscenceYear)) {
+  if (/^\d+$/.test(dateOfAbscenceDay) && /^\d+$/.test(dateOfAbscenceMonth) && /^\d+$/.test(dateOfAbscenceYear)) {
 
     req.session.data['dateOfAbscence'] = DateTime.fromObject({
       day: dateOfAbscenceDay,
@@ -222,7 +222,7 @@ router.post('/v2/change-effective-from', function (req, res) {
   var changeEffectiveFromMonth = req.session.data['change-effective-from-month'];
   var changeEffectiveFromYear = req.session.data['change-effective-from-year'];
 
-  if (!isNaN(changeEffectiveFromDay) && !isNaN(changeEffectiveFromMonth) && !isNaN(changeEffectiveFromYear)) {
+  if (/^\d+$/.test(changeEffectiveFromDay) && /^\d+$/.test(changeEffectiveFromMonth) && /^\d+$/.test(changeEffectiveFromYear)) {
 
     req.session.data['changeEffectiveFrom'] = DateTime.fromObject({
       day: changeEffectiveFromDay,
@@ -261,7 +261,7 @@ router.post('/v2/change-effective-until', function (req, res) {
   var changeEffectiveUntilMonth = req.session.data['change-effective-until-month'];
   var changeEffectiveUntilYear = req.session.data['change-effective-until-year'];
 
-  if (!isNaN(changeEffectiveUntilDay) && !isNaN(changeEffectiveUntilMonth) && !isNaN(changeEffectiveUntilYear)) {
+  if (/^\d+$/.test(changeEffectiveUntilDay) && /^\d+$/.test(changeEffectiveUntilMonth) && /^\d+$/.test(changeEffectiveUntilYear)) {
 
     req.session.data['changeEffectiveUntil'] = DateTime.fromObject({
       day: changeEffectiveUntilDay,
@@ -581,7 +581,7 @@ router.post('/v2/future-date-change', function (req, res) {
   var futureDateChangeMonth = req.session.data['future-date-change-month'];
   var futureDateChangeYear = req.session.data['future-date-change-year'];
 
-  if (!isNaN(futureDateChangeDay) && !isNaN(futureDateChangeMonth) && !isNaN(futureDateChangeYear)) {
+  if (/^\d+$/.test(futureDateChangeDay) && /^\d+$/.test(futureDateChangeMonth) && /^\d+$/.test(futureDateChangeYear)) {
 
     req.session.data['futureDateChange'] = DateTime.fromObject({
       day: futureDateChangeDay,
@@ -685,7 +685,7 @@ router.post('/v2/career-break-extended-until', function (req, res) {
   var careerBreakExtendedUntilMonth = req.session.data['career-break-extended-until-month'];
   var careerBreakExtendedUntilYear = req.session.data['career-break-extended-until-year'];
 
-  if (!isNaN(careerBreakExtendedUntilDay) && !isNaN(careerBreakExtendedUntilMonth) && !isNaN(careerBreakExtendedUntilYear)) {
+  if (/^\d+$/.test(careerBreakExtendedUntilDay) && /^\d+$/.test(careerBreakExtendedUntilMonth) && /^\d+$/.test(careerBreakExtendedUntilYear)) {
 
     req.session.data['careerBreakExtendedUntil'] = DateTime.fromObject({
       day: careerBreakExtendedUntilDay,
@@ -708,7 +708,7 @@ router.post('/v2/return-to-work-date', function (req, res) {
   var returnToWorkDateMonth = req.session.data['return-to-work-date-month'];
   var returnToWorkDateYear = req.session.data['return-to-work-date-year'];
 
-  if (!isNaN(returnToWorkDateDay) && !isNaN(returnToWorkDateMonth) && !isNaN(returnToWorkDateYear)) {
+  if (/^\d+$/.test(returnToWorkDateDay) && /^\d+$/.test(returnToWorkDateMonth) && /^\d+$/.test(returnToWorkDateYear)) {
 
     req.session.data['returnToWorkDate'] = DateTime.fromObject({
       day: returnToWorkDateDay,
