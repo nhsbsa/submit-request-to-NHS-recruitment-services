@@ -159,17 +159,25 @@ router.post('/v1/date-of-abscence', function (req, res) {
   var dateOfAbscenceMonth = req.session.data['date-of-abscence-month'];
   var dateOfAbscenceYear = req.session.data['date-of-abscence-year'];
 
-  if (/^\d+$/.test(dateOfAbscenceDay) && /^\d+$/.test(dateOfAbscenceMonth) && /^\d+$/.test(dateOfAbscenceYear)) {
+  try {
 
-    req.session.data['dateOfAbscence'] = DateTime.fromObject({
-      day: dateOfAbscenceDay,
-      month: dateOfAbscenceMonth,
-      year: dateOfAbscenceYear
-    }).toFormat("d MMMM yyyy");
+    if (/^\d+$/.test(dateOfAbscenceDay) && /^\d+$/.test(dateOfAbscenceMonth) && /^\d+$/.test(dateOfAbscenceYear)) {
 
-    res.redirect('/v1/change-effective-from')
-  } else {
+      req.session.data['dateOfAbscence'] = DateTime.fromObject({
+        day: dateOfAbscenceDay,
+        month: dateOfAbscenceMonth,
+        year: dateOfAbscenceYear
+      }).toFormat("d MMMM yyyy");
+
+      res.redirect('/v1/change-effective-from')
+    } else {
+      res.redirect('/v1/date-of-abscence')
+    }
+
+  } catch (err) {
+
     res.redirect('/v1/date-of-abscence')
+
   }
 
 })
@@ -182,17 +190,25 @@ router.post('/v1/change-effective-from', function (req, res) {
   var changeEffectiveFromMonth = req.session.data['change-effective-from-month'];
   var changeEffectiveFromYear = req.session.data['change-effective-from-year'];
 
-  if (/^\d+$/.test(changeEffectiveFromDay) && /^\d+$/.test(changeEffectiveFromMonth) && /^\d+$/.test(changeEffectiveFromYear)) {
+  try {
 
-    req.session.data['changeEffectiveFrom'] = DateTime.fromObject({
-      day: changeEffectiveFromDay,
-      month: changeEffectiveFromMonth,
-      year: changeEffectiveFromYear
-    }).toFormat("d MMMM yyyy");
+    if (/^\d+$/.test(changeEffectiveFromDay) && /^\d+$/.test(changeEffectiveFromMonth) && /^\d+$/.test(changeEffectiveFromYear)) {
 
-    res.redirect('/v1/temporary-change')
-  } else {
+      req.session.data['changeEffectiveFrom'] = DateTime.fromObject({
+        day: changeEffectiveFromDay,
+        month: changeEffectiveFromMonth,
+        year: changeEffectiveFromYear
+      }).toFormat("d MMMM yyyy");
+
+      res.redirect('/v1/temporary-change')
+    } else {
+      res.redirect('/v1/change-effective-from')
+    }
+
+  } catch (err) {
+
     res.redirect('/v1/change-effective-from')
+
   }
 
 })
@@ -221,17 +237,25 @@ router.post('/v1/change-effective-until', function (req, res) {
   var changeEffectiveUntilMonth = req.session.data['change-effective-until-month'];
   var changeEffectiveUntilYear = req.session.data['change-effective-until-year'];
 
-  if (/^\d+$/.test(changeEffectiveUntilDay) && /^\d+$/.test(changeEffectiveUntilMonth) && /^\d+$/.test(changeEffectiveUntilYear)) {
+  try {
 
-    req.session.data['changeEffectiveUntil'] = DateTime.fromObject({
-      day: changeEffectiveUntilDay,
-      month: changeEffectiveUntilMonth,
-      year: changeEffectiveUntilYear
-    }).toFormat("d MMMM yyyy");
+    if (/^\d+$/.test(changeEffectiveUntilDay) && /^\d+$/.test(changeEffectiveUntilMonth) && /^\d+$/.test(changeEffectiveUntilYear)) {
 
-    res.redirect('/v1/letter')
-  } else {
+      req.session.data['changeEffectiveUntil'] = DateTime.fromObject({
+        day: changeEffectiveUntilDay,
+        month: changeEffectiveUntilMonth,
+        year: changeEffectiveUntilYear
+      }).toFormat("d MMMM yyyy");
+
+      res.redirect('/v1/letter')
+    } else {
+      res.redirect('/v1/change-effective-until')
+    }
+
+  } catch (err) {
+
     res.redirect('/v1/change-effective-until')
+
   }
 
 })
@@ -541,17 +565,25 @@ router.post('/v1/future-date-change', function (req, res) {
   var futureDateChangeMonth = req.session.data['future-date-change-month'];
   var futureDateChangeYear = req.session.data['future-date-change-year'];
 
-  if (/^\d+$/.test(futureDateChangeDay) && /^\d+$/.test(futureDateChangeMonth) && /^\d+$/.test(futureDateChangeYear)) {
+  try {
 
-    req.session.data['futureDateChange'] = DateTime.fromObject({
-      day: futureDateChangeDay,
-      month: futureDateChangeMonth,
-      year: futureDateChangeYear
-    }).toFormat("d MMMM yyyy");
+    if (/^\d+$/.test(futureDateChangeDay) && /^\d+$/.test(futureDateChangeMonth) && /^\d+$/.test(futureDateChangeYear)) {
 
-    res.redirect('/v1/change-effective-from')
-  } else {
+      req.session.data['futureDateChange'] = DateTime.fromObject({
+        day: futureDateChangeDay,
+        month: futureDateChangeMonth,
+        year: futureDateChangeYear
+      }).toFormat("d MMMM yyyy");
+
+      res.redirect('/v1/change-effective-from')
+    } else {
+      res.redirect('/v1/future-date-change')
+    }
+
+  } catch (err) {
+
     res.redirect('/v1/future-date-change')
+
   }
 
 })
@@ -645,17 +677,25 @@ router.post('/v1/career-break-extended-until', function (req, res) {
   var careerBreakExtendedUntilMonth = req.session.data['career-break-extended-until-month'];
   var careerBreakExtendedUntilYear = req.session.data['career-break-extended-until-year'];
 
-  if (/^\d+$/.test(careerBreakExtendedUntilDay) && /^\d+$/.test(careerBreakExtendedUntilMonth) && /^\d+$/.test(careerBreakExtendedUntilYear)) {
+  try {
 
-    req.session.data['careerBreakExtendedUntil'] = DateTime.fromObject({
-      day: careerBreakExtendedUntilDay,
-      month: careerBreakExtendedUntilMonth,
-      year: careerBreakExtendedUntilYear
-    }).toFormat("d MMMM yyyy");
+    if (/^\d+$/.test(careerBreakExtendedUntilDay) && /^\d+$/.test(careerBreakExtendedUntilMonth) && /^\d+$/.test(careerBreakExtendedUntilYear)) {
 
-    res.redirect('/v1/change-effective-from')
-  } else {
+      req.session.data['careerBreakExtendedUntil'] = DateTime.fromObject({
+        day: careerBreakExtendedUntilDay,
+        month: careerBreakExtendedUntilMonth,
+        year: careerBreakExtendedUntilYear
+      }).toFormat("d MMMM yyyy");
+
+      res.redirect('/v1/change-effective-from')
+    } else {
+      res.redirect('/v1/career-break-extended-until')
+    }
+
+  } catch (err) {
+
     res.redirect('/v1/career-break-extended-until')
+
   }
 
 })
@@ -668,17 +708,25 @@ router.post('/v1/return-to-work-date', function (req, res) {
   var returnToWorkDateMonth = req.session.data['return-to-work-date-month'];
   var returnToWorkDateYear = req.session.data['return-to-work-date-year'];
 
-  if (/^\d+$/.test(returnToWorkDateDay) && /^\d+$/.test(returnToWorkDateMonth) && /^\d+$/.test(returnToWorkDateYear)) {
+  try {
 
-    req.session.data['returnToWorkDate'] = DateTime.fromObject({
-      day: returnToWorkDateDay,
-      month: returnToWorkDateMonth,
-      year: returnToWorkDateYear
-    }).toFormat("d MMMM yyyy");
+    if (/^\d+$/.test(returnToWorkDateDay) && /^\d+$/.test(returnToWorkDateMonth) && /^\d+$/.test(returnToWorkDateYear)) {
 
-    res.redirect('/v1/change-effective-from')
-  } else {
+      req.session.data['returnToWorkDate'] = DateTime.fromObject({
+        day: returnToWorkDateDay,
+        month: returnToWorkDateMonth,
+        year: returnToWorkDateYear
+      }).toFormat("d MMMM yyyy");
+
+      res.redirect('/v1/change-effective-from')
+    } else {
+      res.redirect('/v1/return-to-work-date')
+    }
+
+  } catch (err) {
+
     res.redirect('/v1/return-to-work-date')
+
   }
 
 })
