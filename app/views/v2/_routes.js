@@ -806,7 +806,7 @@ router.post('/v2/document-to-upload', function (req, res) {
   var documentToUpload = req.session.data['document-to-upload'];
 
   if (documentToUpload == 'Yes') {
-    res.redirect('/v2/new-starter-form')
+    res.redirect('/v2/upload-document')
   } else if (documentToUpload == 'No') {
     res.redirect('/v2/change-effective-from')
   } else {
