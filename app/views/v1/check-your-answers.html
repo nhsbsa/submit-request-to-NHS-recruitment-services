@@ -1017,19 +1017,19 @@
 
         {% endif %}
 
-        {% if (data['email']) %}
+        {% if (data['letter']) %}
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-            Email to employee
+            Letter to employee
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {{ data['email'] }}
+            {{ data['letter'] }}
           </dd>
 
           <dd class="nhsuk-summary-list__actions">
 
-            <a href="/v1/email">Change</a><span class="nhsuk-u-visually-hidden"> if an email needs to be sent to the employee</span>
+            <a href="/v1/letter">Change</a><span class="nhsuk-u-visually-hidden"> if a letter needs to be sent to the employee</span>
 
           </dd>
 
@@ -1056,6 +1056,22 @@
         </div>
 
         {% endif %}
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Additional changes to employment record
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['additional-change'] }}
+          </dd>
+
+          <dd class="nhsuk-summary-list__actions">
+
+            <a href="/v1/additional-change">Change</a><span class="nhsuk-u-visually-hidden"> if other changes are needed to the employment record</span>
+
+          </dd>
+
+        </div>
 
       </dl>
 
