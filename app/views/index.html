@@ -53,20 +53,14 @@ HR Shared Services
         </div>
       </summary>
       <div class="nhsuk-details__text">
-        <h3 class="nhsuk-heading-s">
-          Information and documents related to the design
-        </h3>
-        <ul>
-          <li><a href="https://miro.com/app/board/uXjVMOg25Ck=/">User Flow (MVP)</a></li>
-        </ul>
         <h3 class="nhsuk-heading-s">User research</h3>
-        <p>[User need, UR/recommendation summary]</p>
+        <p class="nhsuk-u-font-weight-bold">Awaiting user need and user research recommendation</p>
         <h3 class="nhsuk-heading-s">Changes from previous iteration</h3>
         <ul>
           <li>Content revised and updated according to content designer's input</li>
           <li>"What's Jane Doe's payroll number?" screen updated to accomodate for new starter form journey</li>
-          <li>Until the Account / Login mechanism is built, we will manually have to capture requestors name and email
-            address</li>
+          <li>Until the Account / Login mechanism is built, we will manually have to capture requestors name and email address</li>
+          <li>Added 2 new screens on 'Band or Grade' and 'Other' journeys to capture request type. This will be used for management information (MI) purposes.</li>
         </ul>
         <h3 class="nhsuk-heading-s">Error Messages</h3>
         <ul class="nhsuk-list nhsuk-list--bullet">
@@ -78,10 +72,14 @@ HR Shared Services
           <li><a href="v1/errors/503-specific">503 (Specific)</a></li>
         </ul>
         <hr>
+        {{ button({
+          "text": "View prototype (MVP)",
+          "href": "/v1/start-page"
+        }) }}
         {{ actionLink({
           "classes": "nhsuk-u-margin-bottom-3",
-          "text": "View Prototype",
-          "href": "/v1/start-page"
+          "text": "View user journey (MVP)",
+          "href": "https://miro.com/app/board/uXjVMOg25Ck=/"
         }) }}
       </div>
     </details>
@@ -100,12 +98,8 @@ HR Shared Services
         </div>
       </summary>
       <div class="nhsuk-details__text">
-        <h3 class="nhsuk-heading-s">Information and documents related to the design</h3>
-        <ul>
-          <li><a href="https://miro.com/app/board/uXjVM-AmF_k=/">User Flow (Iteration 1)</a></li>
-        </ul>
         <h3 class="nhsuk-heading-s">User research</h3>
-        <p>[User need, UR/recommendation summary]</p>
+        <p class="nhsuk-u-font-weight-bold">Awaiting user need and user research recommendation</p>
         <h3 class="nhsuk-heading-s">Changes from previous iteration</h3>
         <ul>
           <li>Added in the Account / Login mechanism</li>
@@ -121,10 +115,14 @@ HR Shared Services
           <li><a href="v2/errors/503-specific">503 (Specific)</a></li>
         </ul>
         <hr>
+        {{ button({
+          "text": "View prototype (Iteration 1)",
+          "href": "/v2/sign-in"
+        }) }}
         {{ actionLink({
           "classes": "nhsuk-u-margin-bottom-3",
-          "text": "View Prototype",
-          "href": "/v2/sign-in"
+          "text": "View user journey (Iteration 1)",
+          "href": "https://miro.com/app/board/uXjVM-AmF_k=/"
         }) }}
       </div>
     </details>
