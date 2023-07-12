@@ -649,7 +649,7 @@ router.post('/v2/new-hours-pattern', function (req, res) {
   var numberOfHours = req.session.data['number-of-hours'];
   var workingPattern = req.session.data['working-pattern'];
 
-  if (workingPattern == 'Term time') {
+  if (workingPattern == 'Changes to term time') {
     res.redirect('/v2/upload-document')
   } else if (workingPattern == 'Flexible working' || workingPattern == 'Annualised hours' || workingPattern == 'Condensed hours') {
     res.redirect('/v2/change-effective-from')
