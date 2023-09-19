@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Before you start - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% if (data['cutOffDate']) %}
+  {% set cutOffDate = (data['cutOffDate']) %}
+{% else %}
+  {% set cutOffDate = "25 August 2023" %}
+{% endif %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        Before you start
+      </h1>
+
+      <p>You'll be asked to fill out details about the employee. You can find employee employment details in the <a href="https://my.esr.nhs.uk/" target="_blank">Electronic Staff Record (ESR) (opens in a new tab)</a>.</p>
+
+      {{ warningCallout({
+        "heading": "Payroll cut-off dates",
+        "HTML": "<p>Any changes related to an employee may be delayed if submitted after the payroll cut-off date.</p><p>The cut-off date for this month is <strong>" + cutOffDate + "</strong>.</p>"
+      }) }}
+
+      <form action="v2/before-you-start" method="post" novalidate>
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+      </form>
+
+    </div>
+
+  </div>
+{% endblock %}

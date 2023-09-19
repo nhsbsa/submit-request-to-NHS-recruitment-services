@@ -7,6 +7,23 @@ const express = require('express');
 const { DateTime } = require("luxon");
 const router = express.Router();
 
+// Calculate cut-off dates
+
+// Get the current date
+const currentDate = DateTime.now();
+
+// Calculate the first day of the next month
+const firstDayOfNextMonth = currentDate.plus({ months: 1 }).startOf('month');
+
+// Calculate the last day of the current month
+const lastDayOfCurrentMonth = firstDayOfNextMonth.minus({ days: 1 });
+
+// Find the last Friday by subtracting days from the last day until it's a Friday (weekday 5)
+let cutOffDate = lastDayOfCurrentMonth;
+while (cutOffDate.weekday !== 5) {
+  cutOffDate = cutOffDate.minus({ days: 1 });
+}
+
 // Sign In
 
 router.post('/v2/sign-in', function (req, res) {
@@ -79,6 +96,16 @@ router.post('/v2/forgot-password', function (req, res) {
 // Start Page
 
 router.post('/v2/start-page', function (req, res) {
+
+  req.session.data['cutOffDate'] = cutOffDate.toFormat('d MMMM yyyy');
+
+  res.redirect('/v2/before-you-start')
+
+})
+
+// Before you start
+
+router.post('/v2/before-you-start', function (req, res) {
 
   res.redirect('/v2/employee-name')
 
