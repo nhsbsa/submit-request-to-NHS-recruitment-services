@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-The change request for {% if (data['employeeTitle']) and (data['employeeFirstName']) and (data['employeeLastName']) %}{{ data['employeeTitle']}} {{ data['employeeFirstName'] }} {{ data['employeeLastName'] }}{% else %}Mrs Jane Doe{% endif %} has been submitted - Submit a request to NHS Recruitment Services - NHSBSA
+The change request for {% if (data['employeeFirstName']) and (data['employeeLastName']) %}{{ data['employeeFirstName'] }} {{ data['employeeLastName'] }}{% else %}Jane Doe{% endif %} has been submitted - Submit a request to NHS Recruitment Services - NHSBSA
 {% endblock %}
 
 {% block content %}
@@ -12,7 +12,7 @@ The change request for {% if (data['employeeTitle']) and (data['employeeFirstNam
       <div class="nhsuk-card" style="background: #005EB8; margin-top: 0;">
         <div class="nhsuk-card__content">
           <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
-            The change request for {% if (data['employeeTitle']) and (data['employeeFirstName']) and (data['employeeLastName']) %}{{ data['employeeTitle']}} {{ data['employeeFirstName'] }} {{ data['employeeLastName'] }}{% else %}Mrs Jane Doe{% endif %} has been submitted
+            The change request for {% if (data['employeeFirstName']) and (data['employeeLastName']) %}{{ data['employeeFirstName'] }} {{ data['employeeLastName'] }}{% else %}Jane Doe{% endif %} has been submitted
           </h1>
           <h2 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
             Reference number: <span class="nhsuk-caption-xl nhsuk-caption--bottom nhsuk-u-font-weight-bold" style="color: white;">HDJ2123F</span>
@@ -22,7 +22,7 @@ The change request for {% if (data['employeeTitle']) and (data['employeeFirstNam
 
       <p>We’ve sent a confirmation email to {% if (data['requestorEmailAddress']) %}{{ data['requestorEmailAddress']}}{% else %}email@emailaddress.com{% endif %}.</p>
 
-      <p>If you cannot find your email you may need to check your spam or junk folders.</p>
+      <p>If you cannot find the email check your spam or junk folders.</p>
 
       <h2 class="nhsuk-heading-m">What happens next</h2>
 
