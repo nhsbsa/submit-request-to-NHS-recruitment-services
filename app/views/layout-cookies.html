@@ -3,37 +3,39 @@
     - change the header and footer 
     - add custom CSS and JavaScript
 -->
-
 <!-- Extends the layout from /docs/views/template.html -->
-{% extends "template.html" %}
+<!DOCTYPE html>
+<html>
 
-<!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-{% block headCSS %}
-  <link href="/css/main.css" rel="stylesheet">
-{% endblock %}
+<head>
+  <title></title>
+</head>
 
-<!-- Set the page title -->
-{% block pageTitle %}
-  NHS.UK prototype kit
-{% endblock %}
+<body>
 
-<!-- Edit the header -->
-<!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
-{% block header %}
+  {% extends "template-cookies.html" %}
+
+  <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+  {% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">{% endblock %}
+  <!-- Set the page title inside the pageTitle block -->
+  {% block pageTitle %} NHS.UK prototype kit {% endblock %}
+  <!-- Header goes inside the header block -->
+  <!-- More info and code for the header can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/header -->
+  {% block header %}
   {{ header({
-    "service": {
-        "name": "Submit a request to NHS Recruitment Services",
+    "transactionalService": {
+        "name": "Get help to buy food and milk (Healthy Start)",
         "href": "/"
       },
       "showNav": "false",
       "showSearch": "false"
     })
   }}
-{% endblock %}
-
-<!-- Edit the footer -->
-<!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
-{% block footer %}
+  {% endblock %}
+  <!-- Footer goes inside the footer block -->
+  <!-- More info and code for the footer can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/footer -->
+  {% block footer %}
   {{ footer({
     "links": [
       {
@@ -64,13 +66,15 @@
       </p>
     </div>
   </div>
-{% endblock %}
+  {% endblock %}
 
 {% block bodyEnd %}
   {% block scripts %}
-    <!-- Custom JavaScript files can be added to this file -->
     {% include "includes/scripts.html" %}
-    <!-- For adding page specific JavsScript -->
     {% block pageScripts %}{% endblock %}
   {% endblock %}
 {% endblock %}
+
+</body>
+
+</html>
