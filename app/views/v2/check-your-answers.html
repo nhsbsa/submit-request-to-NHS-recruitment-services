@@ -248,15 +248,15 @@
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-            {% if (data['unit']) == "%" %}Percentage{% elif (data['unit']) == "£" %}Amount{% else %}Percentage or amount{% endif %} of salary allowance
+            Amount of salary allowance
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {% if (data['unit']) == "£" %}£{% endif %}{{ data['amount'] }}{% if (data['unit']) == "%" %}%{% endif %} per {{ data['salary-percentage-frequency'] }}
+            £{{ data['amount'] }} per {{ data['salary-percentage-frequency'] }}
           </dd>
       
           <dd class="nhsuk-summary-list__actions">
       
-            <a href="/v2/salary-percentage-amount">Change</a><span class="nhsuk-u-visually-hidden"> percentage or amount of salary allowance</span>
+            <a href="/v2/salary-percentage-amount">Change</a><span class="nhsuk-u-visually-hidden"> amount of salary allowance</span>
       
           </dd>
       
@@ -266,26 +266,10 @@
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-            Duration of additional salary payments
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['duration'] }} per {{ data['duration-frequency'] }}
-          </dd>
-      
-          <dd class="nhsuk-summary-list__actions">
-      
-            <a href="/v2/salary-duration">Change</a><span class="nhsuk-u-visually-hidden"> duration of additional salary payments</span>
-      
-          </dd>
-      
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
             Senior finance lead contact details
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {{ data['financeLeadFirstName'] }} per {{ data['financeLeadLastName'] }}<br>
+            {{ data['financeLeadFirstName'] }} {{ data['financeLeadLastName'] }}<br>
             {{ data['financeLead-email-address'] }}
           </dd>
       

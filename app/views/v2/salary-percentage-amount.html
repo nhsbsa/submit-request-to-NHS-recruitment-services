@@ -24,77 +24,34 @@ What percentage or amount of the salary is the allowance? - Submit a request to 
 
       <form action="v2/salary-percentage-amount" method="post" novalidate>
 
-      {% call fieldset({
-        legend: {
-          "html": '
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
           <h1 class="nhsuk-heading-l">
             <span class="nhsuk-caption-l nhsuk-caption--bottom">Change details</span>
             <span class="nhsuk-u-visually-hidden"> - </span>
-            What percentage or amount of the salary is the allowance?
+            What amount of the salary is the allowance?
           </h1>
-          '
-        }
-      }) %}
-      
-        {{ input({
-          label: {
-            "html": 'Amount'
-          },
-          "id": "amount",
-          "name": "amount",
-          spellcheck: false,
-          "classes": "nhsuk-input--width-5"
-        }) }}
-      
-        {{ select({
-          "id": "unit",
-          "name": "unit",
-          "label": {
-            "text": "Unit"
-          },
-          "items": [
-            {
-              "selected": true,
-              "disabled": true,
-              "value": "",
-              "text": "Choose unit"
-            },
-            {
-              "value": "%",
-              "text": "%"
-            },
-            {
-              "value": "£",
-              "text": "£"
-            }
-          ]
-        }) }}
-
-        {{ select({
-          "id": "salary-percentage-frequency",
-          "name": "salary-percentage-frequency",
-          "label": {
-            "text": "Frequency"
-          },
-          "items": [
-            {
-              "selected": true,
-              "disabled": true,
-              "value": "",
-              "text": "Choose frequency"
-            },
-            {
-              "value": "month",
-              "text": "Month"
-            },
-            {
-              "value": "year",
-              "text": "Year"
-            }
-          ]
-        }) }}
-      
-      {% endcall %}
+          </legend>
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="amount">
+              Cost in pounds
+            </label>
+            <div class="nhsuk-input__wrapper">
+              <div class="nhsuk-input__prefix" aria-hidden="true">£</div>
+              <input class="nhsuk-input nhsuk-input--width-5" id="amount" name="amount" type="text" spellcheck="false">
+            </div>
+          </div>
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="salary-percentage-frequency">
+              Frequency
+            </label>
+            <select class="nhsuk-select" id="salary-percentage-frequency" name="salary-percentage-frequency">
+              <option value="" selected disabled>Choose frequency</option>
+              <option value="month">Month</option>
+              <option value="year">Year</option>
+            </select>
+          </div>
+        </fieldset>
 
       {{ button({
         "text": "Continue"

@@ -473,29 +473,12 @@ router.post('/v2/allowance-type-information', function (req, res) {
 router.post('/v2/salary-percentage-amount', function (req, res) {
 
   var salaryAmount = req.session.data['amount'];
-  var salaryUnit = req.session.data['unit'];
   var salaryFrequency = req.session.data['salary-percentage-frequency'];
 
-  if (salaryAmount && salaryUnit && salaryFrequency) {
-    res.redirect('/v2/salary-duration')
-  } else {
-    res.redirect('/v2/salary-percentage-amount')
-  }
-
-})
-
-// Salary duration
-
-router.post('/v2/salary-duration', function (req, res) {
-
-  var duration = req.session.data['duration'];
-  var durationFrequency = req.session.data['duration-frequency'];
-
-
-  if (duration && durationFrequency) {
+  if (salaryAmount && salaryFrequency) {
     res.redirect('/v2/senior-finance-lead')
   } else {
-    res.redirect('/v2/salary-duration')
+    res.redirect('/v2/salary-percentage-amount')
   }
 
 })
