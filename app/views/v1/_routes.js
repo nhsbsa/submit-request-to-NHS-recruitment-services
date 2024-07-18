@@ -164,8 +164,6 @@ router.post('/v1/change-type', function (req, res) {
     res.redirect('/v1/future-date-change')
   } else if (changeType == 'hours') {
     res.redirect('/v1/new-hours-pattern')
-  } else if (changeType == 'maternity-paternity') {
-    res.redirect('/v1/upload-document')
   } else if (changeType == 'pay-step-point') {
     res.redirect('/v1/change-effective-from')
   } else if (changeType == 'upaid-leave-career-break') {
@@ -393,6 +391,23 @@ router.post('/v1/authoriser-email-address', function (req, res) {
 router.post('/v1/check-your-answers', function (req, res) {
 
   res.redirect('/v1/confirmation-successful')
+
+})
+
+
+// Delete Change Request
+
+router.post('/v1/delete-your-change-request', function (req, res) {
+
+  var deleteYourDocument = req.session.data['delete-your-change-request'];
+
+  if (deleteYourDocument == "yes") {
+      res.redirect('/v1/change-type');
+  } else if (deleteYourDocument == "no") {
+      res.redirect('/v1/check-your-answers');
+  } else {
+      res.redirect('/v1/change-type');
+  }
 
 })
 
@@ -642,6 +657,22 @@ router.post('/v1/upload-document', function (req, res) {
 router.post('/v1/documents-added', function (req, res) {
 
   res.redirect('/v1/change-effective-from')
+
+})
+
+// Delete Document
+
+router.post('/v1/delete-your-document', function (req, res) {
+
+  var deleteYourDocument = req.session.data['delete-your-document'];
+
+  if (deleteYourDocument == "yes") {
+      res.redirect('/v1/upload-document');
+  } else if (deleteYourDocument == "no") {
+      res.redirect('/v1/documents-added');
+  } else {
+      res.redirect('/v1/upload-document');
+  }
 
 })
 
