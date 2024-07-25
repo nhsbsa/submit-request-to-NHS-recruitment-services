@@ -6,9 +6,6 @@
   What is {% if (data['authoriserFirstName']) and (data['authoriserLastName']) %}{{ data['authoriserFirstName'] }} {{ data['authoriserLastName'] }}{% else %}John Smith{% endif %}’s job title? - Submit a request to NHS Recruitment Services - NHSBSA
 {% endblock %}
 
-{% block beforeContent %}
-{% endblock %}
-
 {% block outerContent %}
   {{ backLink({
     "href": "javascript:history.go(-1)",

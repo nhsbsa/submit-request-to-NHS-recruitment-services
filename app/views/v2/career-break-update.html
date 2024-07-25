@@ -6,9 +6,6 @@
   How would you like to update {% if (data['employeeFirstName']) and (data['employeeLastName']) %}{{ data['employeeFirstName'] }} {{ data['employeeLastName'] }}{% else %}Jane Doe{% endif %}’s career break? - Submit a request to NHS Recruitment Services - NHSBSA
 {% endblock %}
 
-{% block beforeContent %}
-{% endblock %}
-
 {% block outerContent %}
   {{ backLink({
     "href": "javascript:history.go(-1)",

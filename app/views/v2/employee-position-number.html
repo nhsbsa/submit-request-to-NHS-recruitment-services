@@ -6,9 +6,6 @@
   What is {% if (data['employeeFirstName']) and (data['employeeLastName']) %}{{ data['employeeFirstName'] }} {{ data['employeeLastName'] }}{% else %}Jane Doe{% endif %}’s current position number? - Submit a request to NHS Recruitment Services - NHSBSA
 {% endblock %}
 
-{% block beforeContent %}
-{% endblock %}
-
 {% block outerContent %}
   {{ backLink({
     "href": "javascript:history.go(-1)",
