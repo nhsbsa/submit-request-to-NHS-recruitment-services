@@ -40,6 +40,55 @@ HR Shared Services
   <div class="nhsuk-grid-column-two-thirds">
     <h2>Versions</h2>
 
+
+    <details class="nhsuk-details nhsuk-expander">
+      <summary class="nhsuk-details__summary">
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-two-thirds">
+            <span class="nhsuk-details__summary-text">
+              HRSS (ITERATION 1)
+            </span>
+          </div>
+          <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
+            <strong class="nhsuk-tag nhsuk-tag--blue">DESIGN</strong>
+          </div>
+        </div>
+      </summary>
+      <div class="nhsuk-details__text">
+        <h3 class="nhsuk-heading-s">User research</h3>
+        <p class="nhsuk-u-font-weight-bold">Awaiting user need and user research recommendation</p>
+        <h3 class="nhsuk-heading-s">Changes from previous iteration</h3>
+        <ul>
+          <li>Removed requestors name as this will be captured via the Account / Login mechanism</li>
+        </ul>
+        <h3 class="nhsuk-heading-s">Error Messages</h3>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li><a href="v3/errors/403">403 (Standard)</a></li>
+          <li><a href="v3/errors/403-sequence">403 (Out of Sequence)</a></li>
+          <li><a href="v3/errors/404">404</a></li>
+          <li><a href="v3/errors/500">500</a></li>
+          <li><a href="v3/errors/503-generic">503 (Generic)</a></li>
+          <li><a href="v3/errors/503-specific">503 (Specific)</a></li>
+        </ul>
+        <h3 class="nhsuk-heading-s">Cookies</h3>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li><a href="cookies/start-page">Cookie Banner</a></li>
+          <li><a href="cookies/cookies">Essential Cookies</a></li>
+          <li><a href="cookies/cookie-declaration">Change Non-Essential Cookies</a></li>
+        </ul>  
+        <hr>
+        {{ button({
+          "text": "View prototype (Iteration 1)",
+          "href": "/v3/start-page"
+        }) }}
+        {{ actionLink({
+          "classes": "nhsuk-u-margin-bottom-3",
+          "text": "View user journey (Iteration 1)",
+          "href": "https://miro.com/app/board/uXjVKtmxTHU=/?share_link_id=42418578240"
+        }) }}
+      </div>
+    </details>
+    
     <details class="nhsuk-details nhsuk-expander">
       <summary class="nhsuk-details__summary">
         <div class="nhsuk-grid-row">
@@ -98,54 +147,6 @@ HR Shared Services
         <div class="nhsuk-grid-row">
           <div class="nhsuk-grid-column-two-thirds">
             <span class="nhsuk-details__summary-text">
-              HRSS (ITERATION 1)
-            </span>
-          </div>
-          <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
-            <strong class="nhsuk-tag nhsuk-tag--blue">DESIGN</strong>
-          </div>
-        </div>
-      </summary>
-      <div class="nhsuk-details__text">
-        <h3 class="nhsuk-heading-s">User research</h3>
-        <p class="nhsuk-u-font-weight-bold">Awaiting user need and user research recommendation</p>
-        <h3 class="nhsuk-heading-s">Changes from previous iteration</h3>
-        <ul>
-          <li>Removed requestors name as this will be captured via the Account / Login mechanism</li>
-        </ul>
-        <h3 class="nhsuk-heading-s">Error Messages</h3>
-        <ul class="nhsuk-list nhsuk-list--bullet">
-          <li><a href="v3/errors/403">403 (Standard)</a></li>
-          <li><a href="v3/errors/403-sequence">403 (Out of Sequence)</a></li>
-          <li><a href="v3/errors/404">404</a></li>
-          <li><a href="v3/errors/500">500</a></li>
-          <li><a href="v3/errors/503-generic">503 (Generic)</a></li>
-          <li><a href="v3/errors/503-specific">503 (Specific)</a></li>
-        </ul>
-        <h3 class="nhsuk-heading-s">Cookies</h3>
-        <ul class="nhsuk-list nhsuk-list--bullet">
-          <li><a href="cookies/start-page">Cookie Banner</a></li>
-          <li><a href="cookies/cookies">Essential Cookies</a></li>
-          <li><a href="cookies/cookie-declaration">Change Non-Essential Cookies</a></li>
-        </ul>  
-        <hr>
-        {{ button({
-          "text": "View prototype (Iteration 1)",
-          "href": "/v3/start-page"
-        }) }}
-        {{ actionLink({
-          "classes": "nhsuk-u-margin-bottom-3",
-          "text": "View user journey (Iteration 1)",
-          "href": "https://miro.com/app/board/uXjVM-AmF_k=/"
-        }) }}
-      </div>
-    </details>
-
-    <details class="nhsuk-details nhsuk-expander">
-      <summary class="nhsuk-details__summary">
-        <div class="nhsuk-grid-row">
-          <div class="nhsuk-grid-column-two-thirds">
-            <span class="nhsuk-details__summary-text">
               HRSS - BUILT IN LOGIN
             </span>
           </div>
@@ -180,11 +181,6 @@ HR Shared Services
         {{ button({
           "text": "View prototype",
           "href": "/v2/sign-in"
-        }) }}
-        {{ actionLink({
-          "classes": "nhsuk-u-margin-bottom-3",
-          "text": "View user journey (Iteration 1)",
-          "href": "https://miro.com/app/board/uXjVM-AmF_k=/"
         }) }}
       </div>
     </details>
