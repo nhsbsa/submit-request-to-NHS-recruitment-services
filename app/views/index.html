@@ -29,14 +29,15 @@ HR Shared Services
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 <div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-u-reading-width">
+      <h1>
+        HR Shared Services
+        <span class="nhsuk-caption-xl nhsuk-caption--bottom">Submit a request to NHS Recruitment Services</span>
+      </h1>
+    </div>
+  </div>
   <div class="nhsuk-grid-column-two-thirds">
-
-    <!-- Change the page title here -->
-    <h1>
-      HR Shared Services
-      <span class="nhsuk-caption-xl nhsuk-caption--bottom">Submit a request to NHS Recruitment Services</span>
-    </h1>
-
     <h2>Versions</h2>
 
     <details class="nhsuk-details nhsuk-expander">
@@ -48,7 +49,7 @@ HR Shared Services
             </span>
           </div>
           <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
-            <strong class="nhsuk-tag">In Progress (DEV)</strong>
+            <strong class="nhsuk-tag nhsuk-tag--green">In Progress - DEV</strong>
           </div>
         </div>
       </summary>
@@ -59,7 +60,8 @@ HR Shared Services
         <ul>
           <li>Content revised and updated according to content designer's input</li>
           <li>"What's Jane Doe's payroll number?" screen updated to accomodate for new starter form journey</li>
-          <li>Until the Account / Login mechanism is built, we will manually have to capture requestors name and email address</li>
+          <li>Added Microsoft/Outlook Account / Login mechanism, retained page to capture requestors</li>
+          <li>Removed the page which captures the requestors email address as this will be captured via the Account / Login mechanism</li>
           <li>Added 2 new screens on 'Band or Grade' and 'Other' journeys to capture request type. This will be used for management information (MI) purposes.</li>
           <li>Added dedicated 'Before you start' screen to include where employee information can be found, and what the monthly cut-off dates are for changes to be submitted.</li>
         </ul>
@@ -100,7 +102,7 @@ HR Shared Services
             </span>
           </div>
           <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
-            <strong class="nhsuk-tag nhsuk-tag--grey">TBD</strong>
+            <strong class="nhsuk-tag nhsuk-tag--blue">DESIGN</strong>
           </div>
         </div>
       </summary>
@@ -109,8 +111,55 @@ HR Shared Services
         <p class="nhsuk-u-font-weight-bold">Awaiting user need and user research recommendation</p>
         <h3 class="nhsuk-heading-s">Changes from previous iteration</h3>
         <ul>
-          <li>Added in the Account / Login mechanism</li>
-          <li>Removed requestors name and email address as this will be captured via the Account / Login mechanism</li>
+          <li>Removed requestors name as this will be captured via the Account / Login mechanism</li>
+        </ul>
+        <h3 class="nhsuk-heading-s">Error Messages</h3>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li><a href="v3/errors/403">403 (Standard)</a></li>
+          <li><a href="v3/errors/403-sequence">403 (Out of Sequence)</a></li>
+          <li><a href="v3/errors/404">404</a></li>
+          <li><a href="v3/errors/500">500</a></li>
+          <li><a href="v3/errors/503-generic">503 (Generic)</a></li>
+          <li><a href="v3/errors/503-specific">503 (Specific)</a></li>
+        </ul>
+        <h3 class="nhsuk-heading-s">Cookies</h3>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li><a href="cookies/start-page">Cookie Banner</a></li>
+          <li><a href="cookies/cookies">Essential Cookies</a></li>
+          <li><a href="cookies/cookie-declaration">Change Non-Essential Cookies</a></li>
+        </ul>  
+        <hr>
+        {{ button({
+          "text": "View prototype (Iteration 1)",
+          "href": "/v3/start-page"
+        }) }}
+        {{ actionLink({
+          "classes": "nhsuk-u-margin-bottom-3",
+          "text": "View user journey (Iteration 1)",
+          "href": "https://miro.com/app/board/uXjVM-AmF_k=/"
+        }) }}
+      </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander">
+      <summary class="nhsuk-details__summary">
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-two-thirds">
+            <span class="nhsuk-details__summary-text">
+              HRSS - BUILT IN LOGIN
+            </span>
+          </div>
+          <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
+            <strong class="nhsuk-tag nhsuk-tag--red">RETIRED</strong>
+          </div>
+        </div>
+      </summary>
+      <div class="nhsuk-details__text">
+        <h3 class="nhsuk-heading-s">User research</h3>
+        <p class="nhsuk-u-font-weight-bold">Awaiting user need and user research recommendation</p>
+        <h3 class="nhsuk-heading-s">Changes from previous iteration</h3>
+        <ul>
+          <li>This version required a built in Account / Login mechanism</li>
         </ul>
         <h3 class="nhsuk-heading-s">Error Messages</h3>
         <ul class="nhsuk-list nhsuk-list--bullet">
@@ -129,7 +178,7 @@ HR Shared Services
         </ul>  
         <hr>
         {{ button({
-          "text": "View prototype (Iteration 1)",
+          "text": "View prototype",
           "href": "/v2/sign-in"
         }) }}
         {{ actionLink({
@@ -140,6 +189,37 @@ HR Shared Services
       </div>
     </details>
 
+  </div>
+  <div class="nhsuk-grid-column-one-third key-padding-left">
+      <h3>Key</h2>
+      <table class="nhsuk-table">
+        <tbody class="nhsuk-table__body">
+          <tr role="row" class="nhsuk-table__row">
+            <td class="nhsuk-table__cell">
+              <strong class="nhsuk-tag nhsuk-tag--blue  nhsuk-u-font-size-14">DESIGN</strong>
+            </td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14">All or parts of the version are still being designed</td>
+          </tr>
+          <tr role="row" class="nhsuk-table__row">
+            <td class="nhsuk-table__cell">
+              <strong class="nhsuk-tag nhsuk-tag--yellow nhsuk-u-font-size-14">UR</strong>
+            </td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14">All or parts of the version are currently with UR for usability testing</td>
+          </tr>
+          <tr role="row" class="nhsuk-table__row">
+            <td class="nhsuk-table__cell">
+              <strong class="nhsuk-tag nhsuk-tag--green nhsuk-u-font-size-14">DEV</strong>
+            </td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14">All or parts of the version are currently in development</td>
+          </tr>
+          <tr role="row" class="nhsuk-table__row">
+            <td class="nhsuk-table__cell">
+              <strong class="nhsuk-tag nhsuk-tag--red  nhsuk-u-font-size-14">RETIRED</strong>
+            </td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14">All or parts of the version have been retired and replaced with new prototypes and Miro boards</td>
+          </tr>
+        </tbody>
+      </table>
   </div>
 </div>
 {% endblock %}

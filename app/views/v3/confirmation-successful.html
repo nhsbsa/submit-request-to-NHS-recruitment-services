@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+The change request for {% if (data['employeeFirstName']) and (data['employeeLastName']) %}{{ data['employeeFirstName'] }} {{ data['employeeLastName'] }}{% else %}Jane Doe{% endif %} has been submitted - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <div class="nhsuk-card" style="background: #005EB8; margin-top: 0;">
+        <div class="nhsuk-card__content">
+          <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
+            The change request for {% if (data['employeeFirstName']) and (data['employeeLastName']) %}{{ data['employeeFirstName'] }} {{ data['employeeLastName'] }}{% else %}Jane Doe{% endif %} has been submitted
+          </h1>
+          <h2 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+            Reference number: <span class="nhsuk-caption-xl nhsuk-caption--bottom nhsuk-u-font-weight-bold" style="color: white;">HDJ2123F</span>
+          </h2>
+        </div>
+      </div>
+
+      <p>We’ve sent a confirmation email to {% if (data['requestorEmailAddress']) %}{{ data['requestorEmailAddress']}}{% else %}email@emailaddress.com{% endif %}.</p>
+
+      <p>If you cannot find the email check your spam or junk folders.</p>
+
+      <h2 class="nhsuk-heading-m">What happens next</h2>
+
+      <p>The change request will be processed by {% if (data['cutOffDate']) %}<strong>{{ data['cutOffDate'] }}</strong>{% else %}<strong>25 August 2023</strong>{% endif %}.</p>     
+      
+      <p>To sign out of the service select Finish or close the tab.</p>      
+      
+      <p>You can also make a change request for another employee.</p>
+      
+      <p><a class="nhsuk-button nhsuk-u-margin-bottom-0" href="javascript:window.close();">Finish</a></p>
+
+      <p><a class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="/v3/start-page">New change request</a></p>
+
+      <h2 class="nhsuk-heading-m">Give feedback</h2>
+
+      <p><a href="https://online1.snapsurveys.com/HRSS_Submit_Request_End_of_Journey" target="_blank">What did you think of this service?<span class="nhsuk-u-visually-hidden"> (opens in a new window)</span></a> (takes 30 seconds).</p>
+
+    </div>
+
+</div>
+
+{% endblock %}

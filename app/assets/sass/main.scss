@@ -37,6 +37,26 @@
 }
 
 // ************************************
+// dummy authentication pages
+// ************************************
+
+.nhsuk-dummy-banner{
+  padding: 10px;
+  background-color: $color_nhsuk-yellow;
+  text-align: center;
+}
+
+.nhsuk-width-container-blank{
+  .nhsuk-main-wrapper-blank{
+    width:100%;
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+// ************************************
 // file upload
 // ************************************
 

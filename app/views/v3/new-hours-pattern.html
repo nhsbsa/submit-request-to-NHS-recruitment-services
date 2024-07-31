@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+What are the new working hours and pattern? - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="v3/new-hours-pattern" method="post" novalidate>
+
+      {% call fieldset({
+        legend: {
+          "html": '
+          <h1 class="nhsuk-heading-l">
+            <span class="nhsuk-caption-l nhsuk-caption--bottom">Change details</span>
+            <span class="nhsuk-u-visually-hidden"> - </span>
+            What are the new working hours and pattern?
+          </h1>
+          '
+        }
+      }) %}
+      
+        {{ input({
+          label: {
+            "html": 'Number of hours (optional)'
+          },
+          "id": "number-of-hours",
+          "name": "number-of-hours",
+          spellcheck: false,
+          "classes": "nhsuk-input--width-5"
+        }) }}
+      
+        {{ select({
+          "id": "working-pattern",
+          "name": "working-pattern",
+          "label": {
+            "text": "Working pattern"
+          },
+          "items": [
+            {
+              "selected": true,
+              "disabled": true,
+              "value": "",
+              "text": "Choose working pattern"
+            },
+            {
+              "value": "Flexible working",
+              "text": "Flexible working"
+            },
+            {
+              "value": "Annualised hours",
+              "text": "Annualised hours"
+            },
+            {
+              "value": "Changes to term time",
+              "text": "Changes to term time"
+            },
+            {
+              "value": "Condensed hours",
+              "text": "Condensed hours"
+            }
+          ]
+        }) }}
+      
+      {% endcall %}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+      </form>
+
+    </div>  
+
+  </div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  What is the new salary amount? - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="v3/new-salary-amount" method="post" novalidate>
+      
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="newSalaryAmount">
+              
+              <h1 class="nhsuk-heading-l">
+                <span class="nhsuk-caption-l nhsuk-caption--bottom">Change details</span>
+                <span class="nhsuk-u-visually-hidden"> - </span>
+                What is the new annual salary amount?
+              </h1>
+              
+          </label>
+          <div class="nhsuk-input__wrapper">
+            <div class="nhsuk-input__prefix" aria-hidden="true">£</div>
+            <input class="nhsuk-input nhsuk-input--width-5" id="newSalaryAmount" name="newSalaryAmount" type="text" spellcheck="false">
+          </div>
+        </div>
+
+        <div class="nhsuk-form-group">
+          <p><a href="https://www.nhsemployers.org/articles/pay-scales-202324" target="_blank" aria-label="Open NHS Employers pay scales in a new tab">Salary amounts can be found within the NHS Employers pay scales (opens in a new tab)</a></p>
+        </div>
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+    </div>  
+
+  </div>
+{% endblock %}

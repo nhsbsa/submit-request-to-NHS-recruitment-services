@@ -3,7 +3,7 @@
 {% set mainClasses = "nhsuk-main-wrapper--s" %}
 
 {% block pageTitle %}
-  What is your email address? - Submit a request to NHS Recruitment Services - NHSBSA
+  What is the new position number? - Submit a request to NHS Recruitment Services - NHSBSA
 {% endblock %}
 
 {% block outerContent %}
@@ -15,27 +15,30 @@
 {% endblock %}
 
 {% block content %}
+
   <div class="nhsuk-grid-row">
 
     <div class="nhsuk-grid-column-two-thirds">
 
-        <form action="v1/requestor-email-address" method="post" novalidate>
+        <form action="v3/new-position-number" method="post" novalidate>
       
         {{ input({
           label: {
             "html": '
             <h1 class="nhsuk-heading-l">
-              <span class="nhsuk-caption-l nhsuk-caption--bottom">Requestor details</span>
+              <span class="nhsuk-caption-l nhsuk-caption--bottom">Change details</span>
               <span class="nhsuk-u-visually-hidden"> - </span>
-              What is your email address?
+              What is the new position number?
             </h1>
+            <p>You do not need to provide the employee’s band details.</p>
+            <div class="nhsuk-hint">
+              For example, 22123456
+            </div>
             '
           },
-          "id": "requestorEmailAddress",
-          "name": "requestorEmailAddress",
-          "type": "email",
-          autocomplete: "email",
-          spellcheck: false,
+          "id": "newPositionNumber",
+          "name": "newPositionNumber",
+          "type": "text",
           "classes": "nhsuk-input--width-20"
         }) }}
 

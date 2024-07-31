@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  What type of change do you want to make to the hours? - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="v3/type-of-hour-change" method="post" novalidate>
+
+        {% call fieldset({
+          legend: {
+            "legend{}.html": true,
+            "html": '
+            <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">
+              <span class="nhsuk-caption-l nhsuk-caption--bottom">Change details</span>
+              <span class="nhsuk-u-visually-hidden"> - </span>
+              What type of change do you want to make to the hours?
+            </h1>
+            <div class="nhsuk-hint nhsuk-u-margin-bottom-2">
+              Select one option
+            </div>
+            '
+          }
+          }) %}
+          {{ radios({
+            "idPrefix": "type-of-hour-change",
+            "name": "type-of-hour-change",
+            "items": [
+          {
+            "value": "Changes to current term-time working",
+            "text": "Changes to current term-time working"
+          },
+          {
+            "value": "Flexible working",
+            "text": "Flexible working"
+          },
+          {
+            "value": "Annualised hours",
+            "text": "Annualised hours"
+          }
+        ]
+        }) }}
+        {% endcall %}
+  
+        {{ button({
+          "text": "Continue"
+        }) }}
+  
+      </form>
+
+    </div>  
+
+  </div>
+{% endblock %}

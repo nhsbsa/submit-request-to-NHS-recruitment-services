@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  What other change do you want to make? - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="v3/what-other-change" method="post" novalidate>
+
+        {% call fieldset({
+          legend: {
+            "legend{}.html": true,
+            "html": '
+            <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">
+              <span class="nhsuk-caption-l nhsuk-caption--bottom">Change details</span>
+              <span class="nhsuk-u-visually-hidden"> - </span>
+              What other change do you want to make?
+            </h1>
+            <div class="nhsuk-hint nhsuk-u-margin-bottom-2">
+              Select one option
+            </div>
+            '
+          }
+          }) %}
+          {{ radios({
+            "idPrefix": "what-other-change",
+            "name": "what-other-change",
+            "items": [
+          {
+            "value": "New starter form",
+            "text": "New starter form"
+          },
+          {
+            "value": "NHS BSA term-time application",
+            "text": "NHS BSA term-time application"
+          },
+          {
+            "value": "Civil servants term-time application",
+            "text": "Civil servants term-time application"
+          },
+          {
+            "value": "Flexible retirement request",
+            "text": "Flexible retirement request"
+          },
+          {
+            "value": "Redeployment (at risk request)",
+            "text": "Redeployment (at risk request)"
+          },
+          {
+            "value": "Name change",
+            "text": "Name change"
+          },
+          {
+            "value": "Contractor forms",
+            "text": "Contractor forms"
+          },
+          {
+            "divider": "or"
+          },
+          {
+            "value": "None of the above",
+            "text": "None of the above"
+          }
+        ]
+        }) }}
+        {% endcall %}
+  
+        {{ button({
+          "text": "Continue"
+        }) }}
+  
+      </form>
+
+    </div>  
+
+  </div>
+{% endblock %}

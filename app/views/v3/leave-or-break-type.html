@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  Is {% if (data['employeeFirstName']) and (data['employeeLastName']) %}{{ data['employeeFirstName'] }} {{ data['employeeLastName'] }}{% else %}Jane Doe{% endif %} taking a career break or unpaid leave? - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% set careerBreakUnpaidLeave %}
+  {% if (data['employeeFirstName']) and (data['employeeLastName']) %}
+    <h1 class="nhsuk-heading-l">
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Change details</span>
+      <span class="nhsuk-u-visually-hidden"> - </span>
+      Is {{ data['employeeFirstName'] }} {{ data['employeeLastName'] }} taking a career break or unpaid leave?
+    </h1>
+    <div class="nhsuk-hint">
+      Select one option
+    </div>
+  {% else %}
+  <h1 class="nhsuk-heading-l">
+    <span class="nhsuk-caption-l nhsuk-caption--bottom">Change details</span>
+    <span class="nhsuk-u-visually-hidden"> - </span>
+    Is Jane Doe taking a career break or unpaid leave?
+  </h1>
+  <div class="nhsuk-hint">
+    Select one option
+  </div>
+  {% endif %}
+{% endset -%}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="v3/leave-or-break-type" method="post" novalidate>
+
+        {% call fieldset({
+          legend: {
+            "legend{}.html": true,
+            "html": careerBreakUnpaidLeave
+          }
+          }) %}
+          {{ radios({
+            "idPrefix": "leave-or-break-type",
+            "name": "leave-or-break-type",
+            "classes": "nhsuk-radios--inline",
+            "items": [
+            {
+              "value": "Due to take a career break",
+              "text": "Due to take a career break"
+            },
+            {
+              "value": "Currently on a career break",
+              "text": "Currently on a career break"
+            },
+            {
+              "value": "Due to to take unpaid leave",
+              "text": "Due to to take unpaid leave"
+            }
+          ]
+        }) }}
+        {% endcall %}
+  
+        {{ button({
+          "text": "Continue"
+        }) }}
+  
+      </form>
+
+    </div>  
+
+  </div>
+{% endblock %}

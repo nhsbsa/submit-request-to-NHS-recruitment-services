@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  What is the date of abscence you want to remove? - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="v3/date-of-abscence" method="post" novalidate>
+
+        {{ dateInput({
+          "id": "date-of-abscence",
+          "namePrefix": "date-of-abscence",
+          "fieldset": {
+            "legend": {
+              "html": '
+              <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-2">
+                <span class="nhsuk-caption-l nhsuk-caption--bottom">Change details</span>
+                <span class="nhsuk-u-visually-hidden"> - </span>
+                What is the date of abscence you want to remove?
+              </h1>
+              '
+            }
+          },
+          "hint": {
+            "text": "For example, 15 3 2023"
+          },
+          "items": [
+            {
+              "name": "day",
+              "classes": "nhsuk-input--width-2"
+            },
+            {
+              "name": "month",
+              "classes": "nhsuk-input--width-2"
+            },
+            {
+              "name": "year",
+              "classes": "nhsuk-input--width-4"
+            }
+          ]
+        }) }}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+  
+      </form>
+
+    </div>  
+
+  </div>
+{% endblock %}

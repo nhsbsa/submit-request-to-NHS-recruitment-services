@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+Add a document to support your change request - Submit a request to NHS Recruitment Services - NHSBSA
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="v3/upload-document" method="post" novalidate>
+
+        <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">
+          <span class="nhsuk-caption-l nhsuk-caption--bottom">Change details</span>
+          <span class="nhsuk-u-visually-hidden"> - </span>
+          Add a document to support your change request
+        </h1>
+
+        <p>
+          For example, you might need to upload evidence to support a career break.
+        </p>
+
+        <p>
+          The file you choose must:
+        </p>
+
+        <ul>
+          <li>not be larger than 5MB in size</li>
+          <li>be a DOC, DOCX, PNG, JPEG, PDF, XLXS, XLS or XLSM</li>
+        </ul>
+
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="file-upload">
+            Upload a file
+          </label>
+          <input class="nhsuk-file-upload" id="file-upload" name="file-upload" type="file">
+        </div>
+
+        <p class="nhsuk-u-margin-bottom-0"><a href="/v3/documents-added" class="nhsuk-button nhsuk-button--secondary">View uploaded documents</a></p>
+
+        {{ button({
+          "text": "Upload document"
+        }) }}
+  
+      </form>
+
+    </div>  
+
+  </div>
+{% endblock %}
