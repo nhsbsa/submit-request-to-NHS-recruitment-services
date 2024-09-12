@@ -154,6 +154,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/nhsuk-frontend', express.static(path.join(__dirname, 'node_modules/nhsuk-frontend/packages')));
 app.use('/nhsuk-frontend', express.static(path.join(__dirname, 'node_modules/nhsuk-frontend/dist')));
 
+app.use(express.static('./node_modules/@nhsbsa/session-timeout-warning-component/dist'))
+
 // Check if the app is documentation only
 if (onlyDocumentation === 'true') {
   app.get('/', (req, res) => {

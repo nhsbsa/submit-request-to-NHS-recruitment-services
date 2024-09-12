@@ -60,6 +60,7 @@
   {% endblock %}
 
   <script src="/nhsuk-frontend/nhsuk.min.js" defer></script>
+  <script src="/timeout.js" defer></script>
 
   {% block headIcons %}
   <link rel="shortcut icon" href="/nhsuk-frontend/assets/favicons/favicon.ico" type="image/x-icon">
@@ -97,6 +98,25 @@
   {% block beforeContent %}{% endblock %}
 
   {% block main %}
+
+  <dialog id="js-modal-dialog" data-url-redirect="/v3/errors/timed-out" data-session-timeout="60"
+    data-session-timeout-warning="30" data-session-timeout-timer-text="For security reasons, you will be timed out of this service in "
+    data-session-timeout-timer-extra-text="This is to ensure you data is safe" class="modal-dialog dialog" role="dialog"
+    aria-live="polite" aria-labelledby="dialog-title" aria-describedby="at-timer">
+    <div class="modal-dialog__inner nhsuk-u-reading-width">
+      <h1 id="dialog-title" class="heading-large">
+        Do you want to continue with your application?
+      </h1>
+      <div class="modal-dialog__inner__text">
+        <div id="timer" class="timer" aria-hidden="true" aria-relevant="additions"></div>
+        <div id="at-timer" class="at-timer nhsuk-u-visually-hidden" role="status"></div>
+      </div>
+      <div class="modal-dialog__inner__block">
+        <button class="nhsuk-button js-dialog-close">Continue Application</button>
+      </div>
+    </div>
+  </dialog>
+
   <div class="nhsuk-width-container {{ containerClasses }}">
     {% block outerContent %}{% endblock %}
     <main class="nhsuk-main-wrapper {{ mainClasses }}" id="maincontent" role="main">
