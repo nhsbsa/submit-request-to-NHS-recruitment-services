@@ -9,20 +9,36 @@ const router = express.Router();
 
 // Calculate cut-off dates
 
-// Get the current date
-const currentDate = DateTime.now();
+const cutOffDates = {
+  "2025": {
+      "January": "2025-01-06",
+      "February": "2025-02-06",
+      "March": "2025-03-07",
+      "April": "2025-04-04",
+      "May": "2025-05-07",
+      "June": "2025-06-06",
+      "July": "2025-07-09",
+      "August": "2025-08-06",
+      "September": "2025-09-08",
+      "October": "2025-10-09",
+      "November": "2025-11-06",
+      "December": "2025-12-03"
+  },
+  "2026": {
+      "January": "2026-01-05",
+      "February": "2026-02-05",
+      "March": "2026-03-09"
+  }
+};
 
-// Calculate the first day of the next month
-const firstDayOfNextMonth = currentDate.plus({ months: 1 }).startOf('month');
+// Get the current month and year
+const now = DateTime.now();
+const currentMonth = now.toFormat("LLLL"); // Full month name (e.g., "April")
+const currentYear = now.toFormat("yyyy"); // Year (e.g., "2025")
 
-// Calculate the last day of the current month
-const lastDayOfCurrentMonth = firstDayOfNextMonth.minus({ days: 1 });
+// Find the cutoff date for the current month and year
+const cutOffDate = cutOffDates[currentYear]?.[currentMonth];
 
-// Find the last Friday by subtracting days from the last day until it's a Friday (weekday 5)
-let cutOffDate = lastDayOfCurrentMonth;
-while (cutOffDate.weekday !== 5) {
-  cutOffDate = cutOffDate.minus({ days: 1 });
-}
 
 // Sign In
 
@@ -97,7 +113,7 @@ router.post('/v2/forgot-password', function (req, res) {
 
 router.post('/v2/start-page', function (req, res) {
 
-  req.session.data['cutOffDate'] = cutOffDate.toFormat('d MMMM yyyy');
+  req.session.data['cutOffDate'] = DateTime.fromISO(cutOffDate).toFormat("d LLLL yyyy");
 
   res.redirect('/v2/before-you-start')
 
@@ -508,15 +524,7 @@ router.post('/v2/senior-finance-lead', function (req, res) {
   var allowanceType = req.session.data['allowance-type'];
 
   if (financeLeadFirstName && financeLeadLastName && financeLeadEmailAddress) {
-      
-    if (allowanceType == 'clinical-excellence-award' || allowanceType == 'discretionary-points' || allowanceType == 'distinction-awards' || allowanceType == 'long-term-recruitment' || allowanceType == 'on-call-allowance' || allowanceType == 'short-term-recruitment' || allowanceType == 'shift-allowance' || allowanceType == 'other') {
-      res.redirect('/v2/change-effective-from')
-    } else if (allowanceType == 'hca-allowance-inner' || allowanceType == 'hca-allowance-outer' || allowanceType == 'hca-allowance-fringe' || allowanceType == 'hca-allowance-medical') {
-      res.redirect('/v2/letter')
-    } else {
-      res.redirect('/v2/senior-finance-lead')
-    }
-
+    res.redirect('/v2/change-effective-from')
   } else {
     res.redirect('/v2/senior-finance-lead')
   }
@@ -571,10 +579,11 @@ router.post('/v2/new-step-point', function (req, res) {
 
   var newStepPoint = req.session.data['newStepPoint'];
 
-  if (newStepPoint) {
-    res.redirect('/v2/new-salary-amount')
+  // Check if newStepPoint is entered and is a valid value (1–7)
+  if (newStepPoint && ['1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(newStepPoint)) {
+    res.redirect('/v2/new-salary-amount');
   } else {
-    res.redirect('/v2/new-step-point')
+    res.redirect('/v2/new-step-point');
   }
 
 })

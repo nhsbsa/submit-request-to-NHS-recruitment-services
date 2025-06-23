@@ -440,15 +440,7 @@ router.post('/v3/senior-finance-lead', function (req, res) {
   var allowanceType = req.session.data['allowance-type'];
 
   if (financeLeadFirstName && financeLeadLastName && financeLeadEmailAddress) {
-      
-    if (allowanceType == 'clinical-excellence-award' || allowanceType == 'discretionary-points' || allowanceType == 'distinction-awards' || allowanceType == 'long-term-recruitment' || allowanceType == 'on-call-allowance' || allowanceType == 'short-term-recruitment' || allowanceType == 'shift-allowance' || allowanceType == 'other') {
-      res.redirect('/v3/change-effective-from')
-    } else if (allowanceType == 'hca-allowance-inner' || allowanceType == 'hca-allowance-outer' || allowanceType == 'hca-allowance-fringe' || allowanceType == 'hca-allowance-medical') {
-      res.redirect('/v3/letter')
-    } else {
-      res.redirect('/v3/senior-finance-lead')
-    }
-
+    res.redirect('/v3/change-effective-from')
   } else {
     res.redirect('/v3/senior-finance-lead')
   }
@@ -503,10 +495,11 @@ router.post('/v3/new-step-point', function (req, res) {
 
   var newStepPoint = req.session.data['newStepPoint'];
 
-  if (newStepPoint) {
-    res.redirect('/v3/new-salary-amount')
+  // Check if newStepPoint is entered and is a valid value (1–7)
+  if (newStepPoint && ['1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(newStepPoint)) {
+    res.redirect('/v3/new-salary-amount');
   } else {
-    res.redirect('/v3/new-step-point')
+    res.redirect('/v3/new-step-point');
   }
 
 })

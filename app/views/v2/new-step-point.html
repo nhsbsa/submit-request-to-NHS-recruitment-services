@@ -31,7 +31,7 @@
               What is the new pay-step point?
             </h1>
             <div class="nhsuk-hint">
-              This should be either 1, 2 or 3. Make sure this matches the salary amount.
+              This should be 1 to 9. Make sure this matches the salary amount.
             </div>
             '
           },
@@ -39,6 +39,13 @@
           "name": "newStepPoint",
           "type": "text",
           "classes": "nhsuk-input--width-2"
+        }) }}
+
+        {{ details({
+          "text": "Where can I find each pay-step point?",
+          "HTML": "
+          <p>You can find pay-step points for each NHS pay band on the <a href=\"https://faq-hrss.nhsbsa.nhs.uk/knowledgebase/article/KA-23570/en-us\" target=\"_blank\">NHSBSA Knowledge Base (opens in a new tab)</a>.</p>
+          "
         }) }}
 
         {{ button({

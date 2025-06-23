@@ -1,4 +1,4 @@
-{% extends 'layout-v3.html' %}
+{% extends 'layout.html' %}
 
 {% set mainClasses = "nhsuk-main-wrapper--s" %}
 
@@ -36,6 +36,9 @@ What are the new working hours and pattern? - Submit a request to NHS Recruitmen
         {{ input({
           label: {
             "html": 'Number of hours (optional)'
+          },
+          hint: {
+            text: "The amount allows for a maximum of two decimal places. For example, 37.75"
           },
           "id": "number-of-hours",
           "name": "number-of-hours",
