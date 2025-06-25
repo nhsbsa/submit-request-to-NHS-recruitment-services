@@ -166,9 +166,9 @@ router.post('/v1/change-type', function (req, res) {
 
 router.post('/v1/date-of-abscence', function (req, res) {
 
-  var dateOfAbscenceDay = req.session.data['date-of-abscence-day']?.day;
-  var dateOfAbscenceMonth = req.session.data['date-of-abscence-month']?.month;
-  var dateOfAbscenceYear = req.session.data['date-of-abscence-year']?.year;
+  var dateOfAbscenceDay = req.session.data['date-of-abscence']?.day;
+  var dateOfAbscenceMonth = req.session.data['date-of-abscence']?.month;
+  var dateOfAbscenceYear = req.session.data['date-of-abscence']?.year;
 
   try {
 
@@ -197,9 +197,11 @@ router.post('/v1/date-of-abscence', function (req, res) {
 
 router.post('/v1/change-effective-from', function (req, res) {
 
-  var changeEffectiveFromDay = req.session.data['change-effective-from-day']?.day;
-  var changeEffectiveFromMonth = req.session.data['change-effective-from-month']?.month;
-  var changeEffectiveFromYear = req.session.data['change-effective-from-year']?.year;
+  var changeEffectiveFromDay = req.session.data['change-effective-from']?.day;
+  var changeEffectiveFromMonth = req.session.data['change-effective-from']?.month;
+  var changeEffectiveFromYear = req.session.data['change-effective-from']?.year;
+
+  console.log(changeEffectiveFromDay)
 
   try {
 
@@ -244,9 +246,9 @@ router.post('/v1/temporary-change', function (req, res) {
 
 router.post('/v1/change-effective-until', function (req, res) {
 
-  var changeEffectiveUntilDay = req.session.data['change-effective-until-day']?.day;
-  var changeEffectiveUntilMonth = req.session.data['change-effective-until-month']?.month;
-  var changeEffectiveUntilYear = req.session.data['change-effective-until-year']?.year;
+  var changeEffectiveUntilDay = req.session.data['change-effective-until']?.day;
+  var changeEffectiveUntilMonth = req.session.data['change-effective-until']?.month;
+  var changeEffectiveUntilYear = req.session.data['change-effective-until']?.year;
 
   try {
 
@@ -565,9 +567,9 @@ router.post('/v1/new-position-number-2', function (req, res) {
 
 router.post('/v1/future-date-change', function (req, res) {
 
-  var futureDateChangeDay = req.session.data['future-date-change-day']?.day;
-  var futureDateChangeMonth = req.session.data['future-date-change-month']?.month;
-  var futureDateChangeYear = req.session.data['future-date-change-year']?.year;
+  var futureDateChangeDay = req.session.data['future-date-change']?.day;
+  var futureDateChangeMonth = req.session.data['future-date-change']?.month;
+  var futureDateChangeYear = req.session.data['future-date-change']?.year;
 
   try {
 
@@ -693,9 +695,9 @@ router.post('/v1/career-break-update', function (req, res) {
 
 router.post('/v1/career-break-extended-until', function (req, res) {
 
-  var careerBreakExtendedUntilDay = req.session.data['career-break-extended-until-day']?.day;
-  var careerBreakExtendedUntilMonth = req.session.data['career-break-extended-until-month']?.month;
-  var careerBreakExtendedUntilYear = req.session.data['career-break-extended-until-year']?.year;
+  var careerBreakExtendedUntilDay = req.session.data['career-break-extended-until']?.day;
+  var careerBreakExtendedUntilMonth = req.session.data['career-break-extended-until']?.month;
+  var careerBreakExtendedUntilYear = req.session.data['career-break-extended-until']?.year;
 
   try {
 
@@ -724,9 +726,9 @@ router.post('/v1/career-break-extended-until', function (req, res) {
 
 router.post('/v1/return-to-work-date', function (req, res) {
 
-  var returnToWorkDateDay = req.session.data['return-to-work-date-day']?.day;
-  var returnToWorkDateMonth = req.session.data['return-to-work-date-month']?.month;
-  var returnToWorkDateYear = req.session.data['return-to-work-date-year']?.year;
+  var returnToWorkDateDay = req.session.data['return-to-work-date']?.day;
+  var returnToWorkDateMonth = req.session.data['return-to-work-date']?.month;
+  var returnToWorkDateYear = req.session.data['return-to-work-date']?.year;
 
   try {
 
