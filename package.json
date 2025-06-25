@@ -20,6 +20,7 @@
   "dependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.27.2",
+    "@nhsbsa/session-timeout-warning-component": "^0.0.3",
     "@x-govuk/govuk-prototype-filters": "^2.0.0",
     "body-parser": "^2.2.0",
     "browser-sync": "^3.0.4",
