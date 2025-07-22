@@ -1,8 +1,8 @@
-<!-- Extends the layout from /docs/views/template.html 
-{% extends "prototype-kit-template.njk" %}-->
-{% extends "template.html" %}
+<!-- Extends the layout from /docs/views/template.html -->
+{% extends "prototype-kit-template.njk" %}
+<!-- {% extends "template.html" %}-->
 
-{% block headCSS %}
+{% block head %}
   <link href="/css/main.css" rel="stylesheet">
 {% endblock %}
 
@@ -48,6 +48,9 @@
             </li>
             <li class="nhsuk-footer__list-item nhsuk-footer-default__list-item">
               <a class="nhsuk-footer__list-item-link" href="https://github.com/nhsuk/nhsuk-prototype-kit">NHS.UK prototype kit - GitHub</a>
+            </li>
+            <li class="nhsuk-footer__list-item nhsuk-footer-default__list-item">
+              <a class="nhsuk-footer__list-item-link" href="/prototype-admin/reset?returnPage=">Reset data</a>
             </li>
           </ul>
           <div>
