@@ -8,6 +8,7 @@
 
 
 {% block outerContent %}
+{% from 'back-link/macro.njk' import backLink %}
   {{ backLink({
     "href": "javascript:history.go(-1)",
     "text": "Go back",

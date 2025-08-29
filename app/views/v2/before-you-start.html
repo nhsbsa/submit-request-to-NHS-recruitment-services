@@ -1,16 +1,11 @@
 {% extends 'layout.html' %}
+{% set hideBack ="true" %}
 
 {% block pageTitle %}
 Before you start - Submit a request to NHS Recruitment Services - NHSBSA
 {% endblock %}
 
-{% block outerContent %}
-  {{ backLink({
-    "href": "javascript:history.go(-1)",
-    "text": "Go back",
-    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
-  }) }}
-{% endblock %}
+ 
 
 {% block content %}
 
@@ -30,8 +25,8 @@ Before you start - Submit a request to NHS Recruitment Services - NHSBSA
       <p>You’ll be asked to fill out details about the employee. It could help if you have the employee’s details open in the <a href="https://my.esr.nhs.uk/" target="_blank">Electronic Staff Record (ESR) (opens in a new tab)</a>.</p>
 
       {{ warningCallout({
-        "heading": "When your request will be reviewed",
-        "HTML": "<p>Changes submitted before 11.59pm on " + cutOffDate + " will be reviewed in time for this month’s payroll.</p><p>Changes submitted after this will be reviewed in time for the following month’s payroll.</p>"
+        heading: "When your request will be reviewed",
+        html: "<p>Changes submitted before 11.59pm on " + cutOffDate + " will be reviewed in time for this month’s payroll.</p><p>Changes submitted after this will be reviewed in time for the following month’s payroll.</p>"
       }) }}
 
       <form action="v2/before-you-start" method="post" novalidate>
