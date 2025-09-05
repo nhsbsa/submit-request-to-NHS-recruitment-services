@@ -18,7 +18,9 @@ const sessionInMemory = require('express-session')
 const nunjucks = require('nunjucks')
 
 // Run before other code to make sure variables from .env are available
-dotenv.config()
+dotenv.config({
+  quiet: true
+})
 
 // Local dependencies
 const config = require('./app/config')
@@ -61,7 +63,6 @@ const appViews = [
   join(__dirname, 'lib/prototype-admin/'),
   join(__dirname, 'lib/templates/'),
   join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/components'),
-  join(__dirname, 'node_modules/@nhsbsa/session-timeout-warning-component/component'),
   join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/macros'),
   join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk'),
   join(__dirname, 'node_modules/nhsuk-frontend/dist')
@@ -100,23 +101,21 @@ if (process.env.NODE_ENV === 'production') {
 // Support session data in cookie or memory
 if (useCookieSessionStore === 'true') {
   app.use(
-    sessionInCookie(
-      Object.assign(sessionOptions, {
-        cookieName: sessionName,
-        proxy: true,
-        requestKey: 'session'
-      })
-    )
+    sessionInCookie({
+      ...sessionOptions,
+      cookieName: sessionName,
+      proxy: true,
+      requestKey: 'session'
+    })
   )
 } else {
   app.use(
-    sessionInMemory(
-      Object.assign(sessionOptions, {
-        name: sessionName,
-        resave: false,
-        saveUninitialized: false
-      })
-    )
+    sessionInMemory({
+      ...sessionOptions,
+      name: sessionName,
+      resave: false,
+      saveUninitialized: false
+    })
   )
 }
 
@@ -188,7 +187,6 @@ app.set('trust proxy', 1)
 
 // Use public folder for static assets
 app.use(express.static(join(__dirname, 'public')))
-app.use(express.static('./node_modules/@nhsbsa/session-timeout-warning-component/dist'))
 
 // Use assets from NHS frontend
 app.use(
